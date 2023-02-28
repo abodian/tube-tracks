@@ -52,12 +52,15 @@ describe("getLineData", () => {
           second: "2-digit",
           hour12: false,
         }),
-        expectedArrival: new Date(data[0].timestamp).toLocaleTimeString([], {
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false,
-        }),
+        expectedArrival: new Date(data[0].expectedArrival).toLocaleTimeString(
+          [],
+          {
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+            hour12: false,
+          }
+        ),
       },
     ]);
   });
