@@ -20,8 +20,8 @@ async function getLineData() {
     );
     console.log(response);
   } catch (error) {
-    console.error(error);
+    console.error("An error has occured when making the get request to TFL");
   }
 }
 
-getLineData();
+module.exports = getLineData;
