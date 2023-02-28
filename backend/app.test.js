@@ -6,7 +6,7 @@ jest.mock("axios");
 describe("getLineData", () => {
   let logSpy, errorSpy;
   const jestConsole = console;
-  
+
   beforeEach(() => {
     global.console = require("console");
     logSpy = jest.spyOn(global.console, "log");
@@ -18,21 +18,48 @@ describe("getLineData", () => {
     global.console = jestConsole;
   });
 
-  it("should fetch line data successfully", async () => {
-    const mockResponse = {
-      data: [
-        { id: "1", name: "Train A" },
-        { id: "2", name: "Train B" },
-      ],
-    };
-    axios.get.mockResolvedValue(mockResponse);
+  it("should return transformed data", async () => {
+    const data = [
+      {
+        id: "1",
+        stationName: "Station A",
+        currentLocation: "At Platform",
+        timestamp: new Date().toISOString(),
+        expectedArrival: new Date().toISOString(),
+      },
+      {
+        id: "2",
+        stationName: "Station B",
+        currentLocation: "In Service",
+        timestamp: new Date().toISOString(),
+        expectedArrival: new Date().toISOString(),
+      },
+    ];
 
-    await getLineData();
+    axios.get.mockResolvedValue({ data });
 
-    expect(logSpy).toHaveBeenCalledTimes(1);
-    expect(logSpy).toHaveBeenCalledWith(mockResponse);
-    expect(errorSpy).not.toHaveBeenCalled();
-    expect(axios.get).toHaveBeenCalledTimes(1);
+    const line = "Bakerloo";
+    const transformedData = await getLineData(line);
+
+    expect(transformedData).toEqual([
+      {
+        id: "1",
+        stationName: "Station A",
+        currentLocation: "At Platform",
+        timestamp: new Date(data[0].timestamp).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }),
+        expectedArrival: new Date(data[0].timestamp).toLocaleTimeString([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }),
+      },
+    ]);
   });
 
   it("should throw an error if the request fails", async () => {
