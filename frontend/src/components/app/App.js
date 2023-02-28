@@ -8,8 +8,14 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`/line/${line}`);
-      setData(response.data);
+      try {
+        const response = await axios.get(`http://localhost:8080/line/${line}`);
+        const data = await response.data.transformedData
+        setData(data);
+        
+      } catch (error) {
+        console.error(error);
+      }
     };
     fetchData();
   }, [line]);
@@ -17,12 +23,7 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome!</h1>
-      <h2>Line {line} Data:</h2>
-      {data ? (
-        <p>{data}</p>
-      ) : (
-        <p>Loading data...</p>
-      )}
+      {console.log(data)}
     </div>
   );
 }
