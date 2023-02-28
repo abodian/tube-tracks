@@ -4,6 +4,7 @@ const path = require("path");
 const logger = require("morgan");
 const app = express();
 const axios = require("axios");
+const PORT = process.env.PORT || 3030; //required for Render
 
 // setup for receiving JSON
 app.use(express.json());
@@ -25,3 +26,8 @@ async function getLineData() {
 }
 
 getLineData();
+
+//required for render
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`); 
+});
