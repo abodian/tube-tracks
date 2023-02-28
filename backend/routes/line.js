@@ -1,12 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const { getLineData } = require("../app");
+const TflApiController = require("../controllers/tflController");
 
-// router.get("/:line", async (req, res) => {
-//   const line = req.params.line;
-//   const data = await getLineData(line);
-//   res.send(data);
-//   res.sendStatus(200);
-// });
+router.get("/:line", TflApiController.LineIndex);
 
 module.exports = router;

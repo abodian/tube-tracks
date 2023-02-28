@@ -5,14 +5,14 @@
  */
 
 var app = require("../app");
-var debug = require("debug")("backend:server");
+var debug = require("debug")("acebook:server");
 var http = require("http");
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || "4000");
+var port = normalizePort(process.env.PORT || "8080");
 app.set("port", port);
 
 /**
@@ -82,5 +82,6 @@ function onError(error) {
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  console.log("Now listening on " + bind);
   debug("Listening on " + bind);
 }

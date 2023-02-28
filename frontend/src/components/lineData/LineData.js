@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import axios from "axios";
 
-function App() {
-  const [line, setLine] = useState("victoria");
+function LineData({ line }) {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`/line/${line}`);
+      const response = await axios.get(`/api/${line}`);
       setData(response.data);
     };
     fetchData();
   }, [line]);
 
   return (
-    <div className="App">
-      <h1>Welcome!</h1>
-      <h2>Line {line} Data:</h2>
+    <div>
       {data ? (
-        <p>{data}</p>
+        <div>
+          <h2>Line {line} Data:</h2>
+          <p>{data}</p>
+        </div>
       ) : (
         <p>Loading data...</p>
       )}
@@ -27,4 +26,4 @@ function App() {
   );
 }
 
-export default App;
+module.exports = LineData
