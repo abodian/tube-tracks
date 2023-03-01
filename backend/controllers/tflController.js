@@ -9,7 +9,14 @@ const TflApiController = {
       );
       const responseData = await response.data;
       const transformedData = responseData
-        // .filter((item) => item.currentLocation === "At Platform")
+        .filter((item) => {
+          const expectedArrivalTime = new Date(item.expectedArrival);
+          const currentTime = new Date();
+          return (
+            expectedArrivalTime.getTime() >= currentTime.getTime() &&
+            expectedArrivalTime.getTime() <= currentTime.getTime() + 60000
+          );
+        })
         .map(
           ({
             id,
