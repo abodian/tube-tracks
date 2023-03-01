@@ -17,7 +17,12 @@ function App() {
         console.error(error);
       }
     };
-    fetchData();
+    
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 30000);
+
+    return () => clearInterval(intervalId);
   }, [line]);
 
   useEffect(() => {
