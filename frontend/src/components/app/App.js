@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
+const Tone = require('tone')
 
 function App() {
   const [line, setLine] = useState("victoria");
@@ -41,6 +42,10 @@ function App() {
           expectedArrival.setSeconds(seconds);
           if (expectedArrival.getTime() === now.getTime()) {
             console.log(obj);
+            const keyNotes = ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4'];
+            const noteIndex = Math.floor(Math.random() * keyNotes.length);
+            const synth = new Tone.Synth().toDestination();
+            synth.triggerAttackRelease("C4", "8n")
           }
         });
       }
