@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log('FETCHING API DATA')
         const response = await axios.get(`http://localhost:8080/line/${line}`);
         const data = await response.data.transformedData
         setData(data);
@@ -17,6 +18,8 @@ function App() {
         console.error(error);
       }
     };
+
+    fetchData();
     
     const intervalId = setInterval(() => {
       fetchData();
@@ -27,7 +30,7 @@ function App() {
 
   useEffect(() => {
     const checkExpectedArrival = () => {
-      console.log('checking for time match')
+      console.log('CHECK FOR TIME MATCH')
       if (data) {
         const now = new Date();
         data.forEach((obj) => {
