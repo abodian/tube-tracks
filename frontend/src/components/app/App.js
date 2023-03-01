@@ -20,6 +20,31 @@ function App() {
     fetchData();
   }, [line]);
 
+  useEffect(() => {
+    const checkExpectedArrival = () => {
+      console.log('checking for time match')
+      if (data) {
+        const now = new Date();
+        data.forEach((obj) => {
+          const [hours, minutes, seconds] = obj.expectedArrival.split(':');
+          const expectedArrival = new Date();
+          expectedArrival.setHours(hours);
+          expectedArrival.setMinutes(minutes);
+          expectedArrival.setSeconds(seconds);
+          if (expectedArrival.getTime() === now.getTime()) {
+            console.log(obj);
+          }
+        });
+      }
+    };
+
+    const intervalId = setInterval(() => {
+      checkExpectedArrival();
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [data]);
+  
   return (
     <div className="App">
       <h1>Welcome!</h1>
