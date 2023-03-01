@@ -9,7 +9,7 @@ const TflApiController = {
       );
       const responseData = await response.data;
       const transformedData = responseData
-        .filter((item) => item.currentLocation === "At Platform")
+        // .filter((item) => item.currentLocation === "At Platform")
         .map(
           ({
             id,
