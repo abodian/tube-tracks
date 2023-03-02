@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Line from './Line.js';
 import axios from "axios";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
     <div className="App">
       <h1>Welcome!</h1>
       {console.log(data)}
+      <Line data={data} /> 
     </div>
   );
 }
