@@ -5,8 +5,8 @@ const Homepage = () => {
     <>
       <div className={styles.header}>
         <div className={styles.logo}>
-          <a>
-            <img src="/images/logo.webp"></img>
+          <a href="/">
+            <img src="/images/logo.webp" alt="logo"></img>
           </a>
         </div>
         <div className={styles.strapline}>
@@ -15,13 +15,13 @@ const Homepage = () => {
 
         <div className={styles.instructions}>
           <div className={styles.playnpause}>
-            <img src="/images/playnstop.png"></img>
+            <img src="/images/playnstop.png" alt="play button"></img>
           </div>
           <div className={styles.instruct}>
             Turn up your speakers, relax and press play!
           </div>
           <div className={styles.speaker}>
-            <img src="/images/speaker.png"></img>
+            <img src="/images/speaker.png" alt="adjust volume"></img>
           </div>
         </div>
       </div>
@@ -32,22 +32,22 @@ const Homepage = () => {
             <div>
               <div className={styles.tubeicons}>
                 <input id="Victoria" type="checkbox"></input>
-                <label for="Victoria">Victoria</label>
+                <label>Victoria</label>
                 <span>
-                  <img src="/images/vic.png"></img>
+                  <img src="/images/vic.png" alt="line icon"></img>
                 </span>
               </div>
               <div>
                 <input type="checkbox" name="piccadilly"></input>
-                <label for="piccadilly">Piccadilly</label>
+                <label>Piccadilly</label>
               </div>
               <div>
                 <input id="Victoria" type="checkbox"></input>
-                <label for="Victoria">Hammersmith</label>
+                <label>Hammersmith</label>
               </div>
               <div>
                 <input type="checkbox" name="piccadilly"></input>
-                <label for="piccadilly">Circle</label>
+                <label>Circle</label>
               </div>
             </div>
           </div>
@@ -55,19 +55,19 @@ const Homepage = () => {
             <h1>Features</h1>
             <div>
               <input id="Victoria" type="checkbox"></input>
-              <label for="Victoria">Happy</label>
+              <label>Happy</label>
             </div>
             <div>
               <input type="checkbox" name="piccadilly"></input>
-              <label for="piccadilly">Sad</label>
+              <label>Sad</label>
             </div>
             <div>
               <input id="Victoria" type="checkbox"></input>
-              <label for="Victoria">Single Notes</label>
+              <label>Single Notes</label>
             </div>
             <div>
               <input type="checkbox" name="piccadilly"></input>
-              <label for="piccadilly">Chords</label>
+              <label>Chords</label>
             </div>
           </div>
         </div>
