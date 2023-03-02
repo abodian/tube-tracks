@@ -14,27 +14,29 @@ const TflApiController = {
           const currentTime = new Date();
           return (
             expectedArrivalTime.getTime() >= currentTime.getTime() &&
-            expectedArrivalTime.getTime() <= currentTime.getTime() + 60000
+            expectedArrivalTime.getTime() <= currentTime.getTime() + 180000
           );
         })
         .map(
           ({
             id,
+            expectedArrival,
+            lineName,
             stationName,
             currentLocation,
             timestamp,
-            expectedArrival,
           }) => ({
-            id,
-            stationName,
-            currentLocation,
-            timestamp: new Date(timestamp).toLocaleTimeString([], {
+            expectedArrival: new Date(expectedArrival).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               second: "2-digit",
               hour12: false,
             }),
-            expectedArrival: new Date(expectedArrival).toLocaleTimeString([], {
+            id,
+            stationName,
+            lineName,
+            currentLocation,
+            timestamp: new Date(timestamp).toLocaleTimeString([], {
               hour: "2-digit",
               minute: "2-digit",
               second: "2-digit",
