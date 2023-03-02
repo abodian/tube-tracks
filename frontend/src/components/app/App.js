@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Homepage from "../homepage/Homepage";
+import ArrivalData from "../arrivalData/ArrivalData";
 import "./App.css";
-import axios from "axios";
 
 function App() {
   const [line, setLine] = useState("victoria");
@@ -23,6 +23,10 @@ function App() {
   return (
     <div className="App">
       <Homepage />
+      <ArrivalData line="victoria" noteLength="4n" />
+      <ArrivalData line="central" noteLength="2n" />
+      <ArrivalData line="jubilee" noteLength="8n" />
+      <ArrivalData line="northern" noteLength ="1m" />
     </div>
   );
 }
