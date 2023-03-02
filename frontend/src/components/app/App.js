@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AudioEngine from "../audioEngine/AudioEngine";
+import Homepage from "../homepage/Homepage";
 import axios from "axios";
 import "./App.css";
 
@@ -57,7 +58,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome!</h1>
+      <Homepage />
       <AudioEngine lineData={lineData}></AudioEngine>
     </div>
   );
