@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Line from './Line.js';
 import axios from "axios";
 
 function App() {
@@ -21,11 +22,15 @@ function App() {
   }, [line]);
 
   return (
-    <div className="App">
-      <h1>Welcome!</h1>
-      {console.log(data)}
-    </div>
+
+      <div className="App">
+        <h1>Welcome!</h1>
+        {console.log(data)}
+        <Line numDots={16} lineName="Victoria Line" /> 
+      </div>
+
   );
+  
 }
 
 export default App;
