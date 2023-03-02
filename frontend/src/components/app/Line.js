@@ -300,24 +300,47 @@ function Line(props) {
   });
 
   return (
-    <div>
-      <div>Walthamstow Central {stationWalthamstow}</div>
-      <div>Blackhorse Road {stationBlackhorse}</div>
-      <div>Tottenham Hale {stationTottenham}</div>
-      <div>Seven Sisters {stationSevenSisters}</div>
-      <div>Finsbury Park {stationFinsbury}</div>
-      <div>Highbury & Islington {stationHighbury}</div>
-      <div>King's Cross {stationKingsCross}</div>
-      <div>Euston {stationEuston}</div>
-      <div>Warren Street {stationWarren}</div>
-      <div>Oxford Circus {stationOxford}</div>
-      <div>Green Park {stationGreen}</div>
-      <div>Victoria {stationVictoria}</div>
-      <div>Pimlico {stationPimlico}</div>
-      <div>Vauxhall {stationVauxhall}</div>
-      <div>Stockwell {stationStockwell}</div>
-      <div>Brixton {stationBrixton}</div>
+    <div className="h_line">
+<div class="table">
+  <div class="row header"> 
+  <div class="cell">Walthamstow Central</div>
+    <div class="cell">Blackhorse Road</div>
+    <div class="cell">Tottenham Hale</div>
+    <div class="cell">Seven Sisters</div>
+    <div class="cell">Finsbury Park</div>
+    <div class="cell">Highbury & Islington</div>
+    <div class="cell">King's Cross</div>
+    <div class="cell">Euston</div>
+    <div class="cell">Warren Street</div>
+    <div class="cell">Oxford Circus</div>
+    <div class="cell">Green Park</div>
+    <div class="cell">Victoria</div>
+    <div class="cell">Pimlico</div>
+    <div class="cell">Vauxhall</div>
+    <div class="cell">Stockwell</div>
+    <div class="cell">Brixton</div>
     </div>
+  <div class="row">
+   <div class="cell">{stationWalthamstow}</div>
+    <div class="cell">{stationBlackhorse}</div>
+    <div class="cell">{stationTottenham}</div>
+    <div class="cell">{stationSevenSisters}</div>
+    <div class="cell">{stationFinsbury}</div>
+    <div class="cell">{stationHighbury}</div>
+    <div class="cell">{stationKingsCross}</div>
+    <div class="cell">{stationEuston}</div>
+    <div class="cell">{stationWarren}</div>
+    <div class="cell">{stationOxford}</div>
+    <div class="cell">{stationGreen}</div>
+    <div class="cell">{stationVictoria}</div>
+    <div class="cell">{stationPimlico}</div>
+    <div class="cell">{stationVauxhall}</div>
+    <div class="cell">{stationStockwell}</div>
+    <div class="cell">{stationBrixton}</div>
+  </div>
+</div>
+</div>
+
   );
 }
 

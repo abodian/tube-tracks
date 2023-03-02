@@ -56,7 +56,7 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Welcome!</h1>
+      <h1>sorry its a work in progress!</h1>
       {console.log(data)}
       <Line data={data} /> 
     </div>
