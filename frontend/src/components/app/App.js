@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Homepage from "../homepage/Homepage";
 import "./App.css";
 import axios from "axios";
 
@@ -10,9 +11,8 @@ function App() {
     const fetchData = async () => {
       try {
         const response = await axios.get(`http://localhost:8080/line/${line}`);
-        const data = await response.data.transformedData
+        const data = await response.data.transformedData;
         setData(data);
-        
       } catch (error) {
         console.error(error);
       }
@@ -22,8 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Welcome!</h1>
-      {console.log(data)}
+      <Homepage />
     </div>
   );
 }
