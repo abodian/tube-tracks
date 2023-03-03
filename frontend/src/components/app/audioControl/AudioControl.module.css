@@ -38,3 +38,12 @@ margin-left: auto;
     padding: 14px;
     font-size: 1.8rem;
 }
+
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+  }
