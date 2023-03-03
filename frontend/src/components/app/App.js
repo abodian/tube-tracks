@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Line from './Line.js';
 import AudioEngine from "../audioEngine/AudioEngine";
 import Homepage from "../homepage/Homepage";
 import axios from "axios";
@@ -58,7 +59,9 @@ function App() {
 
   return (
     <div className="App">
-      <Homepage />
+      <h1>sorry its a work in progress!</h1>
+      {console.log(data)}
+      <Line data={data} /> 
       <AudioEngine lineData={lineData}></AudioEngine>
     </div>
   );
