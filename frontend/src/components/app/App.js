@@ -4,10 +4,9 @@ import Homepage from "../homepage/Homepage";
 import Line from "./Line"
 import axios from "axios";
 import "./App.css";
-import Tracklist from "./Checkbox";
+import Tracklist from "../trackList/Tracklist";
 
 function App() {
-  // this hook contains and sets the array of train objects and their arrival times etc
   const [lineData, setLineData] = useState([]);
   const [victoriaCheckbox, setVictoriaCheckbox] = useState(false);
   const [jubileeCheckbox, setJubileeCheckbox] = useState(false);

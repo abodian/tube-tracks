@@ -1,6 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Homepage.module.css";
-const Homepage = () => {
+import Tracklist from "../trackList/Tracklist";
+
+function Homepage() {
+  const [victoriaCheckbox, setVictoriaCheckbox] = useState(true);
+  const [jubileeCheckbox, setJubileeCheckbox] = useState(false);
+  const [centralCheckbox, setCentralCheckbox] = useState(false);
+  const [metropolitanCheckbox, setmetropolitanCheckbox] = useState(false);
+  const [northernCheckbox, setNorthernCheckbox] = useState(false);
+  const [bakerlooCheckbox, setBakerlooCheckbox] = useState(false);
+  const [piccadillyCheckbox, setPiccadillyCheckbox] = useState(false);
+  const [districtCheckbox, setDistrictCheckbox] = useState(false);
+
+  const victoriaCheckboxChange = (isChecked) => {
+    setVictoriaCheckbox(isChecked);
+  };
+
+  const jubileeCheckboxChange = (isChecked) => {
+    setJubileeCheckbox(isChecked);
+  };
+ 
+  const centralCheckboxChange = (isChecked) => {
+    setCentralCheckbox(isChecked);
+  };
+
+  const metropolitanCheckboxChange = (isChecked) => {
+    setmetropolitanCheckbox(isChecked);
+  };  
+
+  const northernCheckboxChange = (isChecked) => {
+    setNorthernCheckbox(isChecked);
+  };
+
+  const bakerlooCheckboxChange = (isChecked) => {
+    setBakerlooCheckbox(isChecked);
+  };
+ 
+  const piccadillyCheckboxChange = (isChecked) => {
+    setPiccadillyCheckbox(isChecked);
+  };
+
+  const districtCheckboxChange = (isChecked) => {
+    setDistrictCheckbox(isChecked);
+  }; 
+
+
   return (
     <>
       <div className={styles.header}>
@@ -30,24 +74,15 @@ const Homepage = () => {
           <div className={styles.tracks}>
             <h1>Track List</h1>
             <div>
-              <div className={styles.tubeicons}>
-                <input id="Victoria" type="checkbox"></input>
-                <label>Victoria</label>
-                <span>
-                  <img src="/images/vic.png" alt="line icon"></img>
-                </span>
-              </div>
               <div>
-                <input type="checkbox" name="piccadilly"></input>
-                <label>Piccadilly</label>
-              </div>
-              <div>
-                <input id="Victoria" type="checkbox"></input>
-                <label>Hammersmith</label>
-              </div>
-              <div>
-                <input type="checkbox" name="piccadilly"></input>
-                <label>Circle</label>
+                <Tracklist label="Victoria" onCheckboxChange={victoriaCheckboxChange} /> {victoriaCheckbox}
+                <Tracklist label="Jubilee" onCheckboxChange={jubileeCheckboxChange} /> {jubileeCheckbox}
+                <Tracklist label="Central" onCheckboxChange={centralCheckboxChange} /> {centralCheckbox}
+                <Tracklist label="Metropolitan" onCheckboxChange={metropolitanCheckboxChange} /> {metropolitanCheckbox}
+                <Tracklist label="Northern" onCheckboxChange={northernCheckboxChange} /> {northernCheckbox}
+                <Tracklist label="Bakerloo" onCheckboxChange={bakerlooCheckboxChange} /> {bakerlooCheckbox}
+                <Tracklist label="Piccadilly" onCheckboxChange={piccadillyCheckboxChange} /> {piccadillyCheckbox}
+                <Tracklist label="District" onCheckboxChange={districtCheckboxChange} /> {districtCheckbox}
               </div>
             </div>
           </div>
@@ -73,10 +108,19 @@ const Homepage = () => {
         </div>
         <div className={styles.theMap}>
           <h1>The Map</h1>
+          {victoriaCheckbox && <p>The Victoria Line</p>}
+          {jubileeCheckbox && <p>The Jubilee Line</p>}
+          {centralCheckbox && <p>The Central Line</p>}
+          {metropolitanCheckbox && <p>The Metropolitan Line</p>}
+          {northernCheckbox && <p>The Northern Line</p>}
+          {bakerlooCheckbox && <p>The Bakerloo Line</p>}
+          {piccadillyCheckbox && <p>The Piccadilly Line</p>}
+          {districtCheckbox && <p>The District Line</p>}
         </div>
       </div>
     </>
   );
 };
+
 
 export default Homepage;
