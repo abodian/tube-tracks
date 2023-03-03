@@ -1,0 +1,40 @@
+.playnpause {
+    transition: 0.3s;
+}
+
+.playnpause img{
+    padding:8px;
+    width:56px;
+    margin:12px 0 2px 12px;
+
+}
+.playnpause:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+
+}
+.playnpause:active{
+    transform: scale(1.1);
+    border: 1px solid rgba(255, 0, 0);
+
+
+}
+.container{
+    display: flex;
+    max-height: 12px;
+}
+
+.speaker{
+margin-left: auto;
+}
+.speaker img{
+    width:68px;
+    padding: 18px;
+
+}
+
+.instruct{
+    justify-content: left;
+    padding: 14px;
+    font-size: 1.8rem;
+}

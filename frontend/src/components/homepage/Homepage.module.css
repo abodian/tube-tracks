@@ -77,19 +77,8 @@ margin-bottom: 24px;
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-.playnpause img{
-    padding:14px;
-    width:68px
 
-}
-.speaker{
-margin-left: auto;
-}
-.speaker img{
-    width:54px;
-    padding: 18px;
 
-}
 input {
     position: absolute;
     opacity: 0;
@@ -142,11 +131,7 @@ input {
     color:#666;
     margin-top: 8px;
 }
-.instruct{
-    justify-content: left;
-    padding: 14px;
-    font-size: 1.8rem;
-}
+
 .theMap{
     width:100%;
 margin-left: 28px;
