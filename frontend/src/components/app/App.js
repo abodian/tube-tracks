@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Line from './Line.js';
 import AudioEngine from "../audioEngine/AudioEngine";
 import Homepage from "../homepage/Homepage";
 import axios from "axios";
