@@ -1,56 +1,12 @@
 import React, { useState, useEffect } from "react";
 import AudioEngine from "../audioEngine/AudioEngine";
 import Homepage from "../homepage/Homepage";
-import Line from "./Line"
 import axios from "axios";
 import "./App.css";
-import Tracklist from "../trackList/Tracklist";
 
 function App() {
   const [lineData, setLineData] = useState([]);
-  const [victoriaCheckbox, setVictoriaCheckbox] = useState(false);
-  const [jubileeCheckbox, setJubileeCheckbox] = useState(false);
-  const [centralCheckbox, setCentralCheckbox] = useState(false);
-  const [metropolitanCheckbox, setmetropolitanCheckbox] = useState(false);
-  const [northernCheckbox, setNorthernCheckbox] = useState(false);
-  const [bakerlooCheckbox, setBakerlooCheckbox] = useState(false);
-  const [piccadillyCheckbox, setPiccadillyCheckbox] = useState(false);
-  const [districtCheckbox, setDistrictCheckbox] = useState(false);
-
-  const victoriaCheckboxChange = (isChecked) => {
-    setVictoriaCheckbox(isChecked);
-  };
-
-  const jubileeCheckboxChange = (isChecked) => {
-    setJubileeCheckbox(isChecked);
-  };
- 
-  const centralCheckboxChange = (isChecked) => {
-    setCentralCheckbox(isChecked);
-  };
-
-  const metropolitanCheckboxChange = (isChecked) => {
-    setmetropolitanCheckbox(isChecked);
-  };  
-
-  const northernCheckboxChange = (isChecked) => {
-    setNorthernCheckbox(isChecked);
-  };
-
-  const bakerlooCheckboxChange = (isChecked) => {
-    setBakerlooCheckbox(isChecked);
-  };
- 
-  const piccadillyCheckboxChange = (isChecked) => {
-    setPiccadillyCheckbox(isChecked);
-  };
-
-  const districtCheckboxChange = (isChecked) => {
-    setDistrictCheckbox(isChecked);
-  }; 
-
-
-
+  
   const fetchData = async () => {
     try {
       // Fetch data for lines
@@ -100,31 +56,10 @@ function App() {
   }, [lineData]);
 
   return (
-    <>
     <div className="App">
       <Homepage />
-      <Tracklist />
       <AudioEngine lineData={lineData}></AudioEngine>
     </div>
-    <div>
-    <Tracklist label="Victoria" onCheckboxChange={victoriaCheckboxChange} />
-    {victoriaCheckbox && <Line data={lineData} />}
-    <Tracklist label="Jubilee" onCheckboxChange={jubileeCheckboxChange} />
-      {jubileeCheckbox && <Line data={lineData} />}
-    <Tracklist label="Central" onCheckboxChange={centralCheckboxChange} />
-      {centralCheckbox && <Line data={lineData} />}
-    <Tracklist label="Metropolitan" onCheckboxChange={metropolitanCheckboxChange} />
-      {metropolitanCheckbox && <Line data={lineData} />}
-    <Tracklist label="Northern" onCheckboxChange={northernCheckboxChange} />
-      {northernCheckbox && <Line data={lineData} />}
-    <Tracklist label="Bakerloo" onCheckboxChange={bakerlooCheckboxChange} />
-      {bakerlooCheckbox && <Line data={lineData} />}
-    <Tracklist label="Piccadilly" onCheckboxChange={piccadillyCheckboxChange} />
-      {piccadillyCheckbox && <Line data={lineData} />}
-    <Tracklist label="District" onCheckboxChange={districtCheckboxChange} />
-      {districtCheckbox && <Line data={lineData} />}
-  </div>
-  </>
   );
 }
 
