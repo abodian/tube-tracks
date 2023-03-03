@@ -1,8 +1,9 @@
 .train-line {
-  display: flex;
+  display: block;
   flex-direction: row;
   justify-content: space-between;
   margin: 20px 0;
+  
 }
 
 .line {
@@ -59,13 +60,22 @@ svg {
   stroke-width: 4px;
 }
 
+.station-name {
+  margin: 10px 0 0 0;
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: normal;
+  color: #555;
+}
+
 .active {
   fill: var(--line-color);
 }
 
-h2 {
+.line-name {
   margin: 10px 0 0 0;
-  font-size: 18px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: normal;

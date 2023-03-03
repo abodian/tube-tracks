@@ -74,7 +74,6 @@ const Homepage = ({ lineData }) => {
           </div>
         </div>
         <div className={styles.theMap}>
-          <h1>The Map</h1>
           <TrainLine lineData={lineData} />
         </div>
       </div>
