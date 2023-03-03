@@ -1,5 +1,5 @@
 import "./TrainLine.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 const Tone = require('tone')
 
 function TrainLine({ lineData }) {
@@ -64,11 +64,11 @@ function TrainLine({ lineData }) {
     <div className="train-line">
       {Object.keys(stations).map((line) => (
         <div key={line} className={`line ${line}`}>
-          <svg viewBox="0 0 5200 100">
+          <svg viewBox="-3800 0 10000 120">
             <line
               x1="0"
               y1="50"
-              x2="5200"
+              x2="6000"
               y2="50"
               className="line-color"
             />
@@ -77,13 +77,13 @@ function TrainLine({ lineData }) {
                 <circle
                   id={station}
                   className={"station"}
-                  cx={((index + 0.5) / stations[line].length) * 5200}
+                  cx={((index + 0.5) / stations[line].length) * 6000}
                   cy="50"
                   r="20"
                 />
                 <text
                   className="station-name"
-                  x={((index + 0.5) / stations[line].length) * 5200}
+                  x={((index + 0.5) / stations[line].length) * 6000}
                   y="100"
                   textAnchor="middle"
                 >

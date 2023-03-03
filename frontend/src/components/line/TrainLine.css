@@ -95,6 +95,7 @@ svg {
 
 .line-name {
   margin: 10px 0 0 0;
+  margin-left: 800px;
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;

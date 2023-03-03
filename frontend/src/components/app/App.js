@@ -59,8 +59,6 @@ function App() {
   return (
     <div className="App">
       <Homepage lineData={lineData} />
-      {/* <Line data={lineData} />  */}
-      {/* <AudioEngine lineData={lineData}></AudioEngine> */}
     </div>
   );
 }
