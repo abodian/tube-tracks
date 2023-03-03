@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./styles.css";
 
 const Station = ({ station, currentStation }) => {
-  const [isActive, setIsActive] = useState(false);
   const ref = useRef(null);
-  const divRef = useRef(null);
 
   useEffect(() => {
     ref.current = document.getElementById(currentStation);
