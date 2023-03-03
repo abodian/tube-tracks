@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AudioEngine from "../audioEngine/AudioEngine";
 import Homepage from "../homepage/Homepage";
+import Line from "./Line"
 import axios from "axios";
 import "./App.css";
 
