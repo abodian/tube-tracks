@@ -1,64 +1,68 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import Line from './Line.js';
+import AudioEngine from "../audioEngine/AudioEngine";
+import Homepage from "../homepage/Homepage";
 import axios from "axios";
+import "./App.css";
 
 function App() {
-  const [line, setLine] = useState("victoria");
-  const [data, setData] = useState(null);
+  // this hook contains and sets the array of train objects and their arrival times etc
+  const [lineData, setLineData] = useState([]);
 
+  const fetchData = async () => {
+    try {
+      // Fetch data for lines
+      // We could write some logic here in the future that handles the user interaction of turning lines on and off
+      const fetchedData = await fetchLineData("victoria, jubilee, central, metropolitan, northern, bakerloo, piccadilly, district");
+
+  
+      // Combine all train line data arrays into one
+
+
+      setLineData(fetchedData);
+      
+    } catch (error) {
+      console.error(error);
+    }
+    console.log(lineData)
+  };
+
+  // this is what is being called in fetchData. An instance for each line making a request to our backend
+  const fetchLineData = async (line) => {
+    try {
+      console.log('FETCHING API DATA')
+      const response = await axios.get(`http://localhost:8080/line/${line}`);
+      return response.data.transformedData;
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // this is handling how frequently we make the requests to the backend
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log('FETCHING API DATA')
-        const response = await axios.get(`http://localhost:8080/line/${line}`);
-        const data = await response.data.transformedData
-        setData(data);
-        
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchData();
-    
+
     const intervalId = setInterval(() => {
       fetchData();
-    }, 30000);
+    }, 175000);
 
-    return () => clearInterval(intervalId);
-  }, [line]);
-
-  useEffect(() => {
-    const checkExpectedArrival = () => {
-      console.log('CHECK FOR TIME MATCH')
-      if (data) {
-        const now = new Date();
-        data.forEach((obj) => {
-          const [hours, minutes, seconds] = obj.expectedArrival.split(':');
-          const expectedArrival = new Date();
-          expectedArrival.setHours(hours);
-          expectedArrival.setMinutes(minutes);
-          expectedArrival.setSeconds(seconds);
-          if (expectedArrival.getTime() === now.getTime()) {
-            console.log(obj);
-          }
-        });
-      }
+    return () => {
+      clearInterval(intervalId);
     };
+  }, []);
 
-    const intervalId = setInterval(() => {
-      checkExpectedArrival();
-    }, 1000);
+  // this console.logs the array of arrival times when it is updated. Just for dev purposes
+  useEffect(() => {
+    console.log(lineData);
+  }, [lineData]);
 
-    return () => clearInterval(intervalId);
-  }, [data]);
-  
   return (
     <div className="App">
       <h1>sorry its a work in progress!</h1>
       {console.log(data)}
       <Line data={data} /> 
+      <AudioEngine lineData={lineData}></AudioEngine>
     </div>
   );
 }
