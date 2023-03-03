@@ -16,15 +16,7 @@ const Homepage = ({ lineData }) => {
         </div>
 
         <div className={styles.instructions}>
-          <div className={styles.playnpause}>
-            <img src="/images/playnstop.png" alt="play button"></img>
-          </div>
-          <div className={styles.instruct}>
-            Turn up your speakers, relax and press play!
-          </div>
-          <div className={styles.speaker}>
-            <img src="/images/speaker.png" alt="adjust volume"></img>
-          </div>
+          <AudioControl />
         </div>
       </div>
       <div className={styles.content}>
