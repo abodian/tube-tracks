@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine"
+import AudioControl from "../app/audioControl/AudioControl"
 
 const Homepage = ({ lineData }) => {
   return (
