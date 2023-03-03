@@ -1,151 +1,237 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 44px;
-
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 44px;
 }
 
-.logo img{
-    width:120px;
-    border-radius: 12px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.logo img {
+  width: 120px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.strapline{
-    color: #720F54;
-    font-family: 'Cabin';
-    font-size: 3rem;
-    vertical-align: bottom;
-    padding-left: 12px;
-    width:400px;
+.strapline {
+  color: #720f54;
+  font-family: "Cabin";
+  font-size: 3rem;
+  vertical-align: bottom;
+  padding-left: 12px;
+  width: 400px;
 }
 
-
-.instructions{
-    display: flex;
-    border:solid 1px #999;
-    background-color: #fff;
-    border-radius: 12px;
-    margin-left: auto;
-    width: 600px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+.instructions {
+  display: flex;
+  border: solid 1px #999;
+  background-color: #fff;
+  border-radius: 12px;
+  margin-left: auto;
+  width: 600px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.tracksNfeatures{
-    width: 240px;
+.tracksNfeatures {
+  width: 240px;
 }
-.tracks, .features, .buttons, .theMap{
-    border:solid 1px #999;
-    background-color: #fff;
-    border-radius: 12px;
-    padding:14px;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-}
-.tracks h1, .features h1{
-    font-size: 1.4rem;
-    font-family: "Cabin";
-    color: #720F54;
-    margin-top: 0;
-
-}
-.tracks div, .features div{
-margin-bottom: 24px;
+.tracks,
+.features,
+.buttons,
+.theMap {
+  border: solid 1px #999;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.features{
-    order:solid 1px #999;
-    border-radius: 12px;
+.theMap {
+  overflow-x: auto;
 }
-.theMap{
-    padding: 12px;
+.tracks h1,
+.features h1 {
+  font-size: 1.4rem;
+  font-family: "Cabin";
+  color: #720f54;
+  margin-top: 0;
 }
-.content{
-    display: flex;
-}
-
-.checkbox{
-    -webkit-appearance: none;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
-    background: #f8f7f7;
-    border: 5px solid #fff;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+.tracks div,
+.features div {
+  margin-bottom: 24px;
 }
 
+.features {
+  order: solid 1px #999;
+  border-radius: 12px;
+}
+.theMap {
+  padding: 12px;
+}
+.content {
+  display: flex;
+}
+.checkbox {
+  -webkit-appearance: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background: #f8f7f7;
+  border: 5px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.playnpause img {
+  padding: 14px;
+  width: 68px;
+}
+.speaker {
+  margin-left: auto;
+}
+.speaker img {
+  width: 54px;
+  padding: 18px;
+}
+input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+label {
+  position: relative;
+  display: block;
+  padding-left: 30px;
+  cursor: pointer;
+}
+label:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  left: 0;
+  display: block;
+  height: 20px;
+  width: 20px;
+  background-color: #369cdc;
+  border-radius: 3px;
+}
+label:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #333;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+input:checked + label:after {
+  opacity: 1;
+}
+.buttons {
+  width: 66px;
+  margin-left: 240px;
+  height: 100%;
+  margin-bottom: 0;
+  padding-bottom: 28px;
+}
+.strapline span {
+  display: block;
+  font-size: 1.6rem;
+  color: #666;
+  margin-top: 8px;
+}
+.instruct {
+  justify-content: left;
+  padding: 14px;
+  font-size: 1.8rem;
+}
+.theMap {
+  width: 100%;
+  margin-left: 28px;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background: #f8f7f7;
+  border: 5px solid #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
 input {
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-  }
-  label {
-    position: relative;
-    display: block;
-    padding-left: 30px;
-    cursor: pointer;
-  }
-  label:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    margin-top: -10px;
-    left: 0;
-    display: block;
-    height: 20px;
-    width: 20px;
-    background-color: #369CDC;
-    border-radius: 3px;
-  }
-  label:after {
-    content: '';
-    position: absolute;
-    left: 7px;
-    top: 1px;
-    width: 5px;
-    height: 10px;
-    border: solid #333;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
-    opacity: 0;
-  }
-  input:checked + label:after {
-    opacity: 1;
-  }
-  .buttons{
-    width:66px;
-    margin-left: 240px;
-    height: 100%;
-    margin-bottom: 0;
-    padding-bottom: 28px;
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
-.strapline span{
-    display: block;
-    font-size: 1.6rem;
-    color:#666;
-    margin-top: 8px;
+label {
+  position: relative;
+  display: block;
+  padding-left: 30px;
+  cursor: pointer;
 }
-
-.theMap{
-    width:100%;
-margin-left: 28px;
+label:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  margin-top: -10px;
+  left: 0;
+  display: block;
+  height: 20px;
+  width: 20px;
+  background-color: #369cdc;
+  border-radius: 3px;
+}
+label:after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid #333;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+input:checked + label:after {
+  opacity: 1;
+}
+.buttons {
+  width: 66px;
+  margin-left: 240px;
+  height: 100%;
+  margin-bottom: 0;
+  padding-bottom: 28px;
+}
+.strapline span {
+  display: block;
+  font-size: 1.6rem;
+  color: #666;
+  margin-top: 8px;
 }
 
-.tracks span{
-    display: block;
-    justify-content: right;
+.theMap {
+  width: 100%;
+  margin-left: 28px;
+}
 
-    width:32px;
+.tracks span {
+  display: block;
+  justify-content: right;
+
+  width: 32px;
 }
-.tracks img{width: 32px;
-    margin-left: 18px;
+.tracks img {
+  width: 32px;
+  margin-left: 18px;
 }
-.tubeicons{
-    display:flex
+.tubeicons {
+  display: flex;
 }
