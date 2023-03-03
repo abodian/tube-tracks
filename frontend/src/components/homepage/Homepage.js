@@ -1,6 +1,8 @@
 import React from "react";
 import styles from "./Homepage.module.css";
-const Homepage = () => {
+import TrainLine from "../line/TrainLine"
+
+const Homepage = ({ lineData }) => {
   return (
     <>
       <div className={styles.header}>
@@ -73,6 +75,7 @@ const Homepage = () => {
         </div>
         <div className={styles.theMap}>
           <h1>The Map</h1>
+          <TrainLine lineData={lineData} />
         </div>
       </div>
     </>
