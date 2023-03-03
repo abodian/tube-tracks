@@ -59,6 +59,7 @@ function App() {
   return (
     <div className="App">
       <Homepage />
+      <Line data={lineData} /> 
       <AudioEngine lineData={lineData}></AudioEngine>
     </div>
   );
