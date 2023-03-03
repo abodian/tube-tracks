@@ -59,9 +59,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>sorry its a work in progress!</h1>
-      {console.log(data)}
-      <Line data={data} /> 
+      <Homepage />
+      <Line data={lineData} /> 
       <AudioEngine lineData={lineData}></AudioEngine>
     </div>
   );
