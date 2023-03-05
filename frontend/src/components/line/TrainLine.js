@@ -79,11 +79,11 @@ function TrainLine({ lineData }) {
           const delay = matchingTrains.length * 0.5;
           synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`);
 
-          const delayEffect = new Tone.Reverb({
+          const reverbEffect = new Tone.Reverb({
             wet: 1.0
           });
-          synth.connect(delayEffect);
-          delayEffect.toDestination();
+          synth.connect(reverbEffect);
+          reverbEffect.toDestination();
         });
       }
     };
