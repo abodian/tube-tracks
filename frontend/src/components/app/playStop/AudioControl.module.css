@@ -39,11 +39,11 @@ margin-left: auto;
     font-size: 1.8rem;
 }
 
-
 input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    cursor: pointer;
-    width: 15rem;
+    position: relative;
+        opacity: 0;
+        height:44px;
+        width: 44px !important;
+        border:solid 1px #000;
+      
   }
