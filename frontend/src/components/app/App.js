@@ -11,8 +11,7 @@ function App() {
     try {
       // Fetch data for lines
       // We could write some logic here in the future that handles the user interaction of turning lines on and off
-      const fetchedData = await fetchLineData("victoria, jubilee, central, metropolitan");
-      // , central, metropolitan, northern, bakerloo, piccadilly, district
+      const fetchedData = await fetchLineData("victoria, jubilee, central, metropolitan, northern, bakerloo, piccadilly, district");
   
       // Combine all train line data arrays into one
 
