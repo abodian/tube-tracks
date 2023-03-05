@@ -52,6 +52,7 @@ useEffect(() => {
           }
           const notes = Tone.Frequency(scale).harmonize([0, 2, 4, 5, 7, 9, 11]);
           
+
           // Vary the tempo and rhythm based on the frequency of train arrivals
           const bpm = 120 + (matchingTrains.length * 10);
           const noteLengths = ['16n', '8n', '4n', '2n']
@@ -62,22 +63,12 @@ useEffect(() => {
             envelope: {
               attack: 0.05,
               decay: 0.1,
-              sustain: 0.4,
+              // sustain: 0.4,
               release: 1
             }
           });
           const delay = matchingTrains.length * 0.5;
           synth.triggerAttackRelease(notes[noteIndex], noteLengths[lengthIndex], `+${delay}`);
-
-          
-          // Add a delay effect to the synth
-          const delayEffect = new Tone.PingPongDelay({
-            delayTime: '8n',
-            feedback: 0.3,
-            wet: 0.3
-          });
-          synth.connect(delayEffect);
-          delayEffect.toDestination();
         }
       });
     }

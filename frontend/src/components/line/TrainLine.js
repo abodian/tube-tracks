@@ -42,13 +42,48 @@ function TrainLine({ lineData }) {
           }
         });
         matchingTrains.forEach((train, index) => {
+          let scale = 'C major';
+          if (train.lineName === 'Central') {
+            scale = 'D dorian';
+          } else if (train.lineName === 'Victoria') {
+            scale = 'E phrygian';
+          } else if (train.lineName === 'Piccadilly') {
+            scale = 'F lydian';
+          } else if (train.lineName === 'Jubilee') {
+            scale = 'G mixolydian';
+          } else if (train.lineName === 'Metropolitan') {
+            scale = 'A aeolian';
+          } else if (train.lineName === 'Northern') {
+            scale = 'B locrian';
+          } else if (train.lineName === 'Bakerloo') {
+            scale = 'C# phrygian';
+          } else if (train.lineName === 'District') {
+            scale = 'D# mixolydian';
+          }
+
+          const notes = Tone.Frequency(scale).harmonize([0, 2, 4, 5, 7, 9, 11]);
+
           const keyNotes = ['C4', 'E4', 'G4', 'Bb4', 'C5'];
-          const noteLengths = ['8n', '4n', '2n']
-          const noteIndex = Math.floor(Math.random() * keyNotes.length);
+          const noteLengths = ['16n', '8n', '4n', '2n']
+          const noteIndex = Math.floor(Math.random() * notes.length);
           const lengthIndex = Math.floor(Math.random() * noteLengths.length);
           const synth = new Tone.AMSynth().toDestination();
-          const delay = index * 0.5;
-          synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`)
+          synth.set({
+            envelope: {
+              attack: 0.05,
+              decay: 0.1,
+              sustain: 0.4,
+              release: 1
+            }
+          });
+          const delay = matchingTrains.length * 0.5;
+          synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`);
+
+          const delayEffect = new Tone.Reverb({
+            wet: 1.0
+          });
+          synth.connect(delayEffect);
+          delayEffect.toDestination();
         });
       }
     };
