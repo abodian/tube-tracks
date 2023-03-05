@@ -3,10 +3,33 @@ import React, { useEffect, useState } from "react";
 import "./TrainLine.css";
 import { stations } from "./stations";
 
+import A4 from "../../samples/A4.mp3";
+import C4 from "../../samples/C4.mp3";
+
 const Tone = require("tone");
 
 function TrainLine({ lineData }) {
   const [lines, setLines] = useState(stations.victoria);
+  const [zoom, setZoom] = useState(1);
+  const [samplesLoaded, setSamplesLoaded] = useState(false);
+
+  // const [buffers, setBuffers] = useState([]);
+
+  const [players] = useState([
+    new Tone.Player(A4).toDestination(),
+    new Tone.Player(C4).toDestination(),
+  ]);
+  const handleZoomIn = () => {
+    setZoom(zoom + 0.1);
+  };
+
+  const handleZoomOut = () => {
+    setZoom(zoom - 0.1);
+  };
+
+  const handlePlay = () => {
+    players[0].start();
+  };
 
   useEffect(() => {
     const checkExpectedArrival = () => {
@@ -34,17 +57,19 @@ function TrainLine({ lineData }) {
           }
         });
         matchingTrains.forEach((train, index) => {
-          const keyNotes = ["C4", "E4", "G4", "Bb4", "C5"];
-          const noteLengths = ["8n", "4n", "2n"];
-          const noteIndex = Math.floor(Math.random() * keyNotes.length);
-          const lengthIndex = Math.floor(Math.random() * noteLengths.length);
-          const synth = new Tone.AMSynth().toDestination();
-          const delay = index * 0.5;
-          synth.triggerAttackRelease(
-            keyNotes[noteIndex],
-            noteLengths[lengthIndex],
-            `+${delay}`
-          );
+          handlePlay();
+
+          // const keyNotes = ["C4", "E4", "G4", "Bb4", "C5"];
+          // const noteLengths = ["8n", "4n", "2n"];
+          // const noteIndex = Math.floor(Math.random() * keyNotes.length);
+          // const lengthIndex = Math.floor(Math.random() * noteLengths.length);
+          // const synth = new Tone.AMSynth().toDestination();
+          // const delay = index * 0.5;
+          // synth.triggerAttackRelease(
+          //   keyNotes[noteIndex],
+          //   noteLengths[lengthIndex],
+          //   `+${delay}`
+          // );
         });
       }
     };
@@ -57,7 +82,11 @@ function TrainLine({ lineData }) {
   });
 
   return (
-    <div className="train-line">
+    <div className="train-line" style={{ zoom: zoom }}>
+      <button onClick={handleZoomIn}>Zoom In</button>
+      <button onClick={handleZoomOut}>Zoom Out</button>
+      <button onClick={handlePlay}>play Out</button>
+
       {Object.keys(lines).map((line) => (
         <div key={line} className={`line ${line}`}>
           <svg viewBox="-1000 0 10000 120">
