@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import styles from "./Homepage.module.css";
-import TrainLine from "../line/TrainLine"
-import TrackList from "../trackList/TrackList"
-import AudioControl from "../app/audioControl/AudioControl"
+import TrainLine from "../line/TrainLine";
+import TrackList from "../trackList/TrackList";
+import AudioControl from "../app/audioControl/AudioControl";
 
 const Homepage = ({ lineData }) => {
   const [checkedLines, setCheckedLines] = useState({
@@ -15,13 +15,21 @@ const Homepage = ({ lineData }) => {
     piccadilly: true,
     district: true,
   });
+  const [isRunning, setIsRunning] = useState(true);
+
+  const handleStop = () => {
+    setIsRunning(false);
+  };
+
+  const handleStart = () => {
+    setIsRunning(true);
+  };
 
   const handleCheckboxChange = (event) => {
     const line = event.target.name;
     const isChecked = event.target.checked;
     setCheckedLines({ ...checkedLines, [line]: isChecked });
   };
-
 
   return (
     <>
@@ -36,14 +44,17 @@ const Homepage = ({ lineData }) => {
         </div>
 
         <div className={styles.instructions}>
-          <AudioControl />
+          <AudioControl stop={handleStop} start={handleStart} />
         </div>
       </div>
       <div className={styles.content}>
         <div className={styles.tracksNfeatures}>
-            <div className={styles.tracks}>
+          <div className={styles.tracks}>
             <h1>Track List</h1>
-            <TrackList handleCheckboxChange={handleCheckboxChange} checkedLines={checkedLines} />
+            <TrackList
+              handleCheckboxChange={handleCheckboxChange}
+              checkedLines={checkedLines}
+            />
           </div>
           <div className={styles.features}>
             <h1>Features</h1>
@@ -65,9 +76,16 @@ const Homepage = ({ lineData }) => {
             </div>
           </div>
         </div>
-        <div className={styles.theMap}>
-          <TrainLine checkedLines={checkedLines} lineData={lineData} />
-        </div>
+
+        {isRunning ? (
+          <div className={styles.theMap}>
+            <TrainLine checkedLines={checkedLines} lineData={lineData} />
+          </div>
+        ) : (
+          <div className={styles.jumbo}>
+            <h1>Click the play button to open the map</h1>
+          </div>
+        )}
       </div>
     </>
   );
