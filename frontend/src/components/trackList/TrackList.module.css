@@ -1,0 +1,19 @@
+.toggle-button {
+    background-color: rgb(255, 255, 255);
+    border: none;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 2px solid "red";
+    width: 170px;
+ }
+  
+  .toggle-button.on {
+    background-color: #009fe3;
+  }
+  
+  
+  .toggle-button.off {
+    background-color: #009fe3;
+  }

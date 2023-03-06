@@ -16,9 +16,7 @@ const Homepage = ({ lineData }) => {
     district: true,
   });
 
-  const handleCheckboxChange = (event) => {
-    const line = event.target.name;
-    const isChecked = event.target.checked;
+  const handleCheckboxChange = (line, isChecked) => {
     setCheckedLines({ ...checkedLines, [line]: isChecked });
   };
 
