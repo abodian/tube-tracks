@@ -2,16 +2,16 @@ import "./TrainLine.css";
 import React, { useEffect } from "react";
 const Tone = require('tone')
 
-function TrainLine({ lineData }) {
+function TrainLine({ lineData, checkedLines }) {
   const stations = {
     victoria: ["Brixton", "Stockwell", "Vauxhall", "Pimlico", "Victoria", "Green Park", "Oxford Circus", "Warren Street", "Euston", "King's Cross", "Highbury", "Finsbury Park", "Seven Sisters", "Tottenham Hale", "Blackhorse Road", "Walthamstow Central"],
     jubilee: ["Stanmore", "Canons Park", "Queensbury", "Kingsbury", "Wembley Park", "Neasden", "Dollis Hill", "Willesden Green", "Kilburn", "West Hampstead", "Finchley Road", "Swiss Cottage", "St. Johns Wood", "Baker Street", "Bond Street", "Green Park", "Westminster", "Waterloo", "Southwark", "London Bridge", "Bermondsey", "Canada Water", "Canary Wharf", "North Greenwich", "Canning Town", "West Ham", "Stratford"],
     central: ["Ealing", "West Acton", "North Acton", "East Acton", "White City", "Shepherd's Bush", "Holland Park", "Notting Hill", "Queensway", "Lancaster Gate", "Marble Arch", "Bond Street", "Oxford Circus", "Tottenham Court", "Holborn", "Chancery", "St. Paul's", "Bank", "Liverpool Street", "Bethnal Green", "Mile End", "Stratford", "Leyton", "LeytonStone", "Snaresbrook", "South Woodford", "Woodford", "Buckhurst Hill", "Loughton", "Debden", "Theydon", "Epping"],
     metropolitan: ["Amersham", "Chalfont", "Chorleywood", "Rickmansworth", "Moor Park", "Northwood", "Northwood Hills", "Pinner", "North Harrow", "Harrow-on-the-Hill", "Northwick Park", "Preston Road", "Wembley Park", "Willesden Green", "Finchley Road", "Baker Street", "Great Portland Street", "Euston Square", "King's Cross", "Farringdon", "Barbican", "Moorgate", "Liverpool Street", "Aldgate"],
-    // northern: ["London Bridge", "Waterloo", "Charing Cross", "Camden Town"],
-    // bakerloo: ["Baker Street", "Oxford Circus", "Piccadilly Circus", "Charing Cross"],
-    // piccadilly: ["Earl's Court", "South Kensington", "Piccadilly Circus", "Leicester Square", "Covent Garden"],
-    // district: ["Notting Hill Gate", "South Kensington", "Westminster", "Tower Hill"]
+    northern: ["London Bridge", "Waterloo", "Charing Cross", "Camden Town"],
+    bakerloo: ["Baker Street", "Oxford Circus", "Piccadilly Circus", "Charing Cross"],
+    piccadilly: ["Earl's Court", "South Kensington", "Piccadilly Circus", "Leicester Square", "Covent Garden"],
+    district: ["Notting Hill Gate", "South Kensington", "Westminster", "Tower Hill"]
   };
 
   useEffect(() => {
@@ -27,8 +27,12 @@ function TrainLine({ lineData }) {
           expectedArrival.setMinutes(minutes);
           expectedArrival.setSeconds(seconds);
           if (expectedArrival.getTime() === now.getTime()) {
+            if (checkedLines[train.lineName.toLowerCase()]) {
             console.log(train);
             matchingTrains.push(train);
+            } else {
+              return null
+            }
             const stationName = train.stationName.split(' ')[0];
             console.log(stationName)
             const stationEl = document.querySelectorAll(`[id^='${stationName}']`)
@@ -63,6 +67,7 @@ function TrainLine({ lineData }) {
   return (
     <div className="train-line">
       {Object.keys(stations).map((line) => (
+        checkedLines[line] && (
         <div key={line} className={`line ${line}`}>
           <svg viewBox="-3800 0 10000 120">
             <line
@@ -94,6 +99,7 @@ function TrainLine({ lineData }) {
           </svg>
           <h2 className="line-name">{line}</h2>
         </div>
+        )
       ))}
     </div>
   );
