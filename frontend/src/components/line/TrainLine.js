@@ -5,6 +5,12 @@ import { stations } from "./stations";
 
 import A4 from "../../samples/A4.mp3";
 import C4 from "../../samples/C4.mp3";
+import A5 from "../../samples/A5.mp3";
+import C5 from "../../samples/C5.mp3";
+import D5 from "../../samples/D5.mp3";
+import D4 from "../../samples/D4.mp3";
+import E5 from "../../samples/E5.mp3";
+import G5 from "../../samples/G5.mp3";
 
 const Tone = require("tone");
 
@@ -12,6 +18,12 @@ function TrainLine({ lineData }) {
   const [lines, setLines] = useState(stations.victoria);
   const [zoom, setZoom] = useState(1);
   const [samplesLoaded, setSamplesLoaded] = useState(false);
+
+  const notes = [
+    { name: "G5", url: G5 },
+    { name: "C4", url: C4 },
+    { name: "E5", url: E5 },
+  ];
 
   // const [buffers, setBuffers] = useState([]);
 
@@ -27,8 +39,20 @@ function TrainLine({ lineData }) {
     setZoom(zoom - 0.1);
   };
 
-  const handlePlay = () => {
-    players[0].start();
+  async function loadAudioBuffers() {
+    const buffer1 = await Tone.Buffer.fromUrl(E5);
+    const buffer2 = await Tone.Buffer.fromUrl(C4);
+    const buffer3 = await Tone.Buffer.fromUrl(G5);
+
+    return [buffer1, buffer2, buffer3];
+  }
+
+  const handlePlay = async () => {
+    const buffers = await loadAudioBuffers();
+    const players = buffers.map((buffer) =>
+      new Tone.Player(buffer).toDestination()
+    );
+    players.forEach((player) => player.start());
   };
 
   useEffect(() => {
