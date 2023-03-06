@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Interval, Note, Scale } from "tonal";
 
 import "./TrainLine.css";
 import { stations } from "./stations";
@@ -39,20 +40,50 @@ function TrainLine({ lineData }) {
     setZoom(zoom - 0.1);
   };
 
+  function shiftPitch(note) {
+    const shiftedNote = Note.transpose(C4, "5P");
+    return shiftedNote;
+  }
+
   async function loadAudioBuffers() {
     const buffer1 = await Tone.Buffer.fromUrl(E5);
     const buffer2 = await Tone.Buffer.fromUrl(C4);
     const buffer3 = await Tone.Buffer.fromUrl(G5);
 
-    return [buffer1, buffer2, buffer3];
+    const buffer4 = await Tone.Buffer.fromUrl(A5);
+    const buffer5 = await Tone.Buffer.fromUrl(D4);
+    const buffer6 = await Tone.Buffer.fromUrl(E5);
+
+    // return {
+    //   victoria: [buffer1, buffer2, buffer3],
+    //   central: [buffer1, buffer2, buffer3],
+    //   jubile: [buffer1, buffer2, buffer3],
+    //   metropolitan: [buffer1, buffer2, buffer3],
+    //   northern: [buffer1, buffer2, buffer3],
+    //   bakerloo: [buffer1, buffer2, buffer3],
+    //   piccadilly: [buffer1, buffer2, buffer3],
+    //   district: [buffer1, buffer2, buffer3],
+    // };
+    return [buffer1, buffer2, buffer3, buffer4, buffer5, buffer6];
   }
 
-  const handlePlay = async () => {
+  const handlePlay = async (line) => {
     const buffers = await loadAudioBuffers();
+
     const players = buffers.map((buffer) =>
       new Tone.Player(buffer).toDestination()
     );
-    players.forEach((player) => player.start());
+    if (
+      line === "victoria" ||
+      line === "central" ||
+      line === "district" ||
+      line === "hammersmith" ||
+      line === "piccadilly"
+    ) {
+      players.slice(0, 1).forEach((player) => player.start());
+    } else {
+      players.slice(0, 3).forEach((player) => player.start());
+    }
   };
 
   useEffect(() => {
@@ -81,7 +112,7 @@ function TrainLine({ lineData }) {
           }
         });
         matchingTrains.forEach((train, index) => {
-          handlePlay();
+          handlePlay(train.lineName);
 
           // const keyNotes = ["C4", "E4", "G4", "Bb4", "C5"];
           // const noteLengths = ["8n", "4n", "2n"];
@@ -113,8 +144,8 @@ function TrainLine({ lineData }) {
 
       {Object.keys(lines).map((line) => (
         <div key={line} className={`line ${line}`}>
-          <svg viewBox="-1000 0 10000 120">
-            <line x1="0" y1="50" x2="6000" y2="50" className="line-color" />
+          <svg viewBox="-3000 0 10000 120">
+            <line x1="0" y1="50" x2="5800" y2="50" className="line-color" />
             {lines[line].map((station, index) => (
               <g key={station}>
                 <circle
