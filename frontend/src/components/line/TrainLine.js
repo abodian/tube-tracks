@@ -1,5 +1,5 @@
 import "./TrainLine.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 const Tone = require('tone')
 
 function TrainLine({ lineData, checkedLines }) {
@@ -13,12 +13,35 @@ function TrainLine({ lineData, checkedLines }) {
     piccadilly: ["Earl's Court", "South Kensington", "Piccadilly Circus", "Leicester Square", "Covent Garden"],
     district: ["Notting Hill Gate", "South Kensington", "Westminster", "Tower Hill"]
   };
-  
+
+  const notes = {
+  // C3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C3_1_d2vtle.wav", 
+  CS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
+  DS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
+  // E3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/E3_1_ehglnv.wav", 
+  // F3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F3_1_rfpfmu.wav",
+  FS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
+  // G3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G3_1_ub1rnc.wav",
+  GS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
+  // A3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A3_1_b7sm7f.wav",
+  AS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
+  // B3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/B3_1_yoiozs.wav"
+  }
+
+
   const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
   player.loop = true;
   player.autostart = true;
   player.volume.value = -20
+
+  function pickRandomKey(obj) {
+    const keys = Object.keys(obj);
+    const randomIndex = Math.floor(Math.random() * keys.length);
+    const randomKey = keys[randomIndex]
+    const randomValue = obj[randomKey]
+    return randomValue
+  }
 
   useEffect(() => {
     const checkExpectedArrival = () => {
@@ -52,13 +75,11 @@ function TrainLine({ lineData, checkedLines }) {
           }
         });
         matchingTrains.forEach((train, index) => {
-          // const keyNotes = ['C4', 'E4', 'G4', 'Bb4', 'C5'];
-          // const noteLengths = ['8n', '4n', '2n']
-          // const noteIndex = Math.floor(Math.random() * keyNotes.length);
-          // const lengthIndex = Math.floor(Math.random() * noteLengths.length);
-          // const synth = new Tone.AMSynth().toDestination();
-          // const delay = index * 0.5;
-          // synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`)
+          const randomKey = pickRandomKey(notes)
+          setTimeout(() => {
+            const player = new Tone.Player(randomKey).toDestination()
+            player.autostart = true;
+          }, index * 500); // delay each sound by 1 second
         });
       }
     };
