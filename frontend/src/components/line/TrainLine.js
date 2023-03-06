@@ -13,6 +13,12 @@ function TrainLine({ lineData, checkedLines }) {
     piccadilly: ["Earl's Court", "South Kensington", "Piccadilly Circus", "Leicester Square", "Covent Garden"],
     district: ["Notting Hill Gate", "South Kensington", "Westminster", "Tower Hill"]
   };
+  
+  const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
+  const player = new Tone.Player(backgroundAudio.tense).toDestination();
+  player.loop = true;
+  player.autostart = true;
+  player.volume.value = -20
 
   useEffect(() => {
     const checkExpectedArrival = () => {
@@ -46,13 +52,13 @@ function TrainLine({ lineData, checkedLines }) {
           }
         });
         matchingTrains.forEach((train, index) => {
-          const keyNotes = ['C4', 'E4', 'G4', 'Bb4', 'C5'];
-          const noteLengths = ['8n', '4n', '2n']
-          const noteIndex = Math.floor(Math.random() * keyNotes.length);
-          const lengthIndex = Math.floor(Math.random() * noteLengths.length);
-          const synth = new Tone.AMSynth().toDestination();
-          const delay = index * 0.5;
-          synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`)
+          // const keyNotes = ['C4', 'E4', 'G4', 'Bb4', 'C5'];
+          // const noteLengths = ['8n', '4n', '2n']
+          // const noteIndex = Math.floor(Math.random() * keyNotes.length);
+          // const lengthIndex = Math.floor(Math.random() * noteLengths.length);
+          // const synth = new Tone.AMSynth().toDestination();
+          // const delay = index * 0.5;
+          // synth.triggerAttackRelease(keyNotes[noteIndex], noteLengths[lengthIndex], `+${delay}`)
         });
       }
     };
