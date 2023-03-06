@@ -15,17 +15,29 @@ function TrainLine({ lineData, checkedLines }) {
   };
 
   const notes = {
-  // C3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C3_1_d2vtle.wav", 
-  CS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
-  DS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
-  // E3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/E3_1_ehglnv.wav", 
-  // F3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F3_1_rfpfmu.wav",
-  FS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
+  // C3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C3_1_d2vtle.wav", 
+  CS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
+  DS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
+  // E3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/E3_1_ehglnv.wav", 
+  // F3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F3_1_rfpfmu.wav",
+  FS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
   // G3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G3_1_ub1rnc.wav",
-  GS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
-  // A3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A3_1_b7sm7f.wav",
-  AS3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
-  // B3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/B3_1_yoiozs.wav"
+  GS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
+  // A3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A3_1_b7sm7f.wav",
+  AS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
+  // B3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/B3_1_yoiozs.wav",
+  // C2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126422/tube-tracks/C2_Pizz_1_u2ppuo.wav", 
+  CS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126419/tube-tracks/C_2_Pizz_1_n5g82j.wav",
+  DS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126425/tube-tracks/D__Pizz_1_x6r7vr.wav",
+  // E2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126959/E2_Pizz_1_l8csjo.wav", 
+  // F2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127011/F2_Pizz_1_cpyfx9.wav",
+  FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
+  // G2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126449/tube-tracks/G2_Pizz_1_oleepb.wav",
+  GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
+  // A2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126412/tube-tracks/A2__Pizz_1_uwtmrj.wav",
+  AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
+  // B2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126416/tube-tracks/B2_Pizz_1_awguae.wav",
+
   }
 
 
@@ -33,7 +45,7 @@ function TrainLine({ lineData, checkedLines }) {
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
   player.loop = true;
   player.autostart = true;
-  player.volume.value = -20
+  player.volume.value = -30
 
   function pickRandomKey(obj) {
     const keys = Object.keys(obj);
@@ -76,17 +88,18 @@ function TrainLine({ lineData, checkedLines }) {
         });
         matchingTrains.forEach((train, index) => {
           const randomKey = pickRandomKey(notes)
+          const delay = Math.random() * 1000;
           setTimeout(() => {
             const player = new Tone.Player(randomKey).toDestination()
             player.autostart = true;
-          }, index * 500); // delay each sound by 1 second
+          }, index * 1000 + delay); // delay each sound by 1 second
         });
       }
     };
 
     const intervalId = setInterval(() => {
       checkExpectedArrival();
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(intervalId);
   });
