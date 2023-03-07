@@ -109,11 +109,11 @@ function TrainLine({ lineData, checkedLines }) {
       {Object.keys(stations).map((line) => (
         checkedLines[line] && (
         <div key={line} className={`line ${line}`}>
-          <svg viewBox="-3800 0 10000 120">
+          <svg viewBox="-1230 0 24450 150">
             <line
-              x1="0"
+              x1="9550"
               y1="50"
-              x2="6000"
+              x2="23000"
               y2="50"
               className="line-color"
             />
@@ -122,18 +122,21 @@ function TrainLine({ lineData, checkedLines }) {
                 <circle
                   id={station}
                   className={"station"}
-                  cx={((index + 0.5) / stations[line].length) * 6000}
+                  cx={((index + 0.2) / stations[line].length) * 13000 + 9800}
                   cy="50"
                   r="20"
                 />
-                <text
-                  className="station-name"
-                  x={((index + 0.5) / stations[line].length) * 6000}
-                  y="100"
-                  textAnchor="middle"
-                >
-                  {station}
-                </text>
+        <text
+          className="station-name"
+          x={((index + 0.1) / stations[line].length) * 13000 + 9800}
+          y="90"
+          textAnchor="middle"
+        >
+          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="0.5em">{station.split(' ')[0]}</tspan>
+          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[1]}</tspan>
+          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[2]}</tspan>
+        </text>
+
               </g>
             ))}
           </svg>
