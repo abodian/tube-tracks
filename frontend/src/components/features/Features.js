@@ -60,8 +60,8 @@ function InstrumentButton({ label, checked, onChange, name, color }) {
             }
           }}
         >
-          {selectedTrack === backgroundAudio.orchestron && 'Cosmic Waves (ON)'}
-          {selectedTrack !== backgroundAudio.orchestron && 'Cosmic Waves'}
+          {selectedTrack === backgroundAudio.cosmicWave && 'Cosmic Waves (ON)'}
+          {selectedTrack !== backgroundAudio.cosmicWave && 'Cosmic Waves'}
         </button>
       </div>
 
