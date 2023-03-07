@@ -44,10 +44,10 @@ function TrainLine({ lineData, checkedLines }) {
             const stationEl = document.querySelectorAll(`[id^='${stationName}']`)
             console.log(stationEl)
             stationEl.forEach((el) => {
-              el.style.fill = "red";
+              el.classList.add('pulse');
               setTimeout(() => {
-                el.style.fill = "";
-              }, 1000);
+                el.classList.remove('pulse');
+              }, 3000);
             });
           }
         });
