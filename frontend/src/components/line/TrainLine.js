@@ -15,37 +15,88 @@ function TrainLine({ lineData, checkedLines }) {
   };
 
   const notes = {
-  // C3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C3_1_d2vtle.wav", 
   CS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
   DS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
-  // E3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/E3_1_ehglnv.wav", 
-  // F3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F3_1_rfpfmu.wav",
   FS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
-  // G3: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G3_1_ub1rnc.wav",
   GS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
-  // A3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A3_1_b7sm7f.wav",
   AS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
-  // B3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/B3_1_yoiozs.wav",
-  // C2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126422/tube-tracks/C2_Pizz_1_u2ppuo.wav", 
   CS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126419/tube-tracks/C_2_Pizz_1_n5g82j.wav",
   DS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126425/tube-tracks/D__Pizz_1_x6r7vr.wav",
-  // E2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126959/E2_Pizz_1_l8csjo.wav", 
-  // F2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127011/F2_Pizz_1_cpyfx9.wav",
   FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
-  // G2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126449/tube-tracks/G2_Pizz_1_oleepb.wav",
   GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
-  // A2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126412/tube-tracks/A2__Pizz_1_uwtmrj.wav",
   AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
-  // B2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126416/tube-tracks/B2_Pizz_1_awguae.wav",
-
   }
+
+  const bass = {
+    EBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/E_Bass_bip_1_qzgqbn.wav",
+    ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
+    FSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/FS_Bass_bip_1_j6rwcm.wav",
+    GSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/GS_Bass_bip_1_zam6i0.wav",
+    ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189275/tube-tracks/Bass%20Samples/AS_Bass_bip_1_nm1fec.wav",
+    BBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/B_Bass_bip_1_si5hac.wav",
+    CSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/C_Bass_bip_1_dhhlfd.wav",
+  }
+
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '1') {
+    const player = new Tone.Player(bass.ESBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '2') {
+    const player = new Tone.Player(bass.FSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '3') {
+    const player = new Tone.Player(bass.GSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '4') {
+    const player = new Tone.Player(bass.ASBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -10
+    player.loop = false;
+    }
+  });
+
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '5') {
+    const player = new Tone.Player(bass.BBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -15
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '6') {
+    const player = new Tone.Player(bass.CSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -15
+    player.loop = false;
+    }
+  });
 
 
   const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
   player.loop = true;
   player.autostart = true;
-  player.volume.value = -30
+  player.volume.value = -40
 
   function pickRandomKey(obj) {
     const keys = Object.keys(obj);
