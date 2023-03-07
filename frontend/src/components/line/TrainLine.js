@@ -126,17 +126,15 @@ function TrainLine({ lineData, checkedLines }) {
                   cy="50"
                   r="20"
                 />
-        <text
-          className="station-name"
-          x={((index + 0.1) / stations[line].length) * 13000 + 9800}
-          y="90"
-          textAnchor="middle"
-        >
-          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="0.5em">{station.split(' ')[0]}</tspan>
-          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[1]}</tspan>
-          <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[2]}</tspan>
-        </text>
-
+                <text
+                  className="station-name"
+                  x={((index + 0.1) / stations[line].length) * 13000 + 9800}
+                  y="90"
+                  textAnchor="middle"        >
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="0.5em">{station.split(' ')[0]}</tspan>
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[1]}</tspan>
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[2]}</tspan>
+                </text>
               </g>
             ))}
           </svg>
