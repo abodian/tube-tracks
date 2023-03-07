@@ -72,14 +72,6 @@ function TrainLine({ lineData, checkedLines }) {
     }
   });
 
-  // change line 36 backgroundAudio.(choose which backing track here - orchestron or cosmicWave)
-  const backgroundAudio = {orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav", cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav"}
-  const player = new Tone.Player(backgroundAudio.cosmicWave).toDestination();
-  player.loop = true;
-  player.autostart = true;
-  player.volume.value = -40
-
-
   function pickRandomKey(obj) {
     const keys = Object.keys(obj);
     const randomIndex = Math.floor(Math.random() * keys.length);
@@ -119,12 +111,13 @@ function TrainLine({ lineData, checkedLines }) {
             });
           }
         });
+
         matchingTrains.forEach((train, index) => {
           const randomKey = pickRandomKey(notes)
           const delay = Math.random() * 1000;
           setTimeout(() => {
-            const player = new Tone.Player(randomKey).toDestination()
-            player.autostart = true;
+            const arrivalPlayer = new Tone.Player(randomKey).toDestination()
+            arrivalPlayer.autostart = true;
           }, index * 1000 + delay); // delay each sound by 1 second
         });
       }

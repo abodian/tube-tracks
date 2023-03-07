@@ -15,8 +15,6 @@ function TrackButton({ label, checked, onChange, name, color }) {
     <div>
       <button style={style} className={className} onClick={() => onChange(name, !checked)}>{label} </button>
     </div>
-
-
   )
 }
 
