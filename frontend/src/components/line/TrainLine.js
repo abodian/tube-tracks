@@ -32,11 +32,12 @@ function TrainLine({ lineData, checkedLines }) {
   }
 
 
-  const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav"}
-  const player = new Tone.Player(backgroundAudio.tense).toDestination();
+  const backgroundAudio = {orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav", cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav"}
+  const player = new Tone.Player(backgroundAudio.cosmicWave).toDestination();
   player.loop = true;
   player.autostart = true;
   player.volume.value = -30
+
 
   function pickRandomKey(obj) {
     const keys = Object.keys(obj);
