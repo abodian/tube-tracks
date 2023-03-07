@@ -32,7 +32,7 @@ function TrainLine({ lineData, checkedLines }) {
   }
 
 
-  const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
+  const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav"}
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
   player.loop = true;
   player.autostart = true;
