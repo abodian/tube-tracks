@@ -3,6 +3,7 @@ import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine";
 import TrackList from "../trackList/TrackList";
 import AudioControl from "../app/audioControl/AudioControl";
+import Features from "../features/Features"
 
 const Homepage = ({ lineData }) => {
   const [checkedLines, setCheckedLines] = useState({
@@ -56,22 +57,7 @@ const Homepage = ({ lineData }) => {
           </div>
           <div className={styles.features}>
             <h1>Features</h1>
-            <div>
-              <input id="Victoria" type="checkbox"></input>
-              <label>Happy</label>
-            </div>
-            <div>
-              <input type="checkbox" name="piccadilly"></input>
-              <label>Sad</label>
-            </div>
-            <div>
-              <input id="Victoria" type="checkbox"></input>
-              <label>Single Notes</label>
-            </div>
-            <div>
-              <input type="checkbox" name="piccadilly"></input>
-              <label>Chords</label>
-            </div>
+            <Features />
           </div>
         </div>
 
