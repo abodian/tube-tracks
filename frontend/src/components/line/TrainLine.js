@@ -25,14 +25,14 @@ function TrainLine({ lineData, checkedLines }) {
   FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
   GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
   AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
-
-  // FSGSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSGSClusterMarimba_bip_2_oepjei.wav",
   FSDSChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
   GSESChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
-  CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav"
+  CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav",
+  }
+  
   const bass = {
     EBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/E_Bass_bip_1_qzgqbn.wav",
-    ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
+    DSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
     FSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/FS_Bass_bip_1_j6rwcm.wav",
     GSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/GS_Bass_bip_1_zam6i0.wav",
     ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678190334/tube-tracks/Bass%20Samples/AS_Bass_bip_1_etl9hi.wav",
@@ -40,57 +40,35 @@ function TrainLine({ lineData, checkedLines }) {
     CSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/C_Bass_bip_1_dhhlfd.wav",
   }
 
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '1') {
-    const player = new Tone.Player(bass.ESBass).toDestination()
+  const playBassNote = (note) => {
+    const player = new Tone.Player(bass[note]).toDestination();
     player.autostart = true;
-    player.volume.value = -20
+    player.volume.value = -25
     player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '2') {
-    const player = new Tone.Player(bass.FSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '3') {
-    const player = new Tone.Player(bass.GSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '4') {
-    const player = new Tone.Player(bass.ASBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
+  };
 
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '5') {
-    const player = new Tone.Player(bass.BBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -15
-    player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '6') {
-    const player = new Tone.Player(bass.CSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -15
-    player.loop = false;
+  document.addEventListener("keypress", (event) => {
+    switch (event.key) {
+      case "1":
+        playBassNote("DSBass");
+        break;
+      case "2":
+        playBassNote("FSBass");
+        break;
+      case "3":
+        playBassNote("GSBass");
+        break;
+      case "4":
+        playBassNote("ASBass");
+        break;
+      case "5":
+        playBassNote("BBass");
+        break;
+      case "6":
+        playBassNote("CSBass");
+        break;
+      default:
+        break;
     }
   });
 
