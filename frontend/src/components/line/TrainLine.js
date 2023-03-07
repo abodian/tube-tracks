@@ -25,8 +25,11 @@ function TrainLine({ lineData, checkedLines }) {
   FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
   GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
   AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
-  }
 
+  // FSGSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSGSClusterMarimba_bip_2_oepjei.wav",
+  FSDSChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
+  GSESChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
+  CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav"
   const bass = {
     EBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/E_Bass_bip_1_qzgqbn.wav",
     ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
