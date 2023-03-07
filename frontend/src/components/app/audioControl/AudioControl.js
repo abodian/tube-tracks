@@ -35,7 +35,7 @@ const PlayStop = ({ stop, start }) => {
             onChange={handleVolumeChange}
           />
         </div>
-        <div> {volume}%</div>
+        <div> {volume}</div>
       </div>
     </div>
   );
