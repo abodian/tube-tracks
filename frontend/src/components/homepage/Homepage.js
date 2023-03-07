@@ -44,6 +44,12 @@ const Homepage = ({ lineData }) => {
     piccadilly: true,
     district: true,
   });
+
+  const [checkedInstruments, setCheckedInstruments] = useState({
+    piano: true,
+    strings: true,
+    marimba: true,
+  })
   
   const [isRunning, setIsRunning] = useState(false);
  
@@ -65,7 +71,12 @@ const Homepage = ({ lineData }) => {
   const handleBackingChange = (value) => {
     setBackingTrack(value)
   }
-  console.log(backingTrack)
+  
+  const handleInstrumentChange = (instrument, isChecked) => {
+    setCheckedInstruments({...checkedInstruments, [instrument]: isChecked})
+  }
+  console.log(checkedInstruments)
+
   return (
     <>
       <div className={styles.header}>
@@ -93,7 +104,7 @@ const Homepage = ({ lineData }) => {
           </div>
           <div className={styles.features}>
             <h1>Features</h1>
-            <Features backgroundAudio={backgroundAudio} onBackingChange={handleBackingChange} />
+            <Features backgroundAudio={backgroundAudio} onBackingChange={handleBackingChange} checkedInstruments={checkedInstruments} handleInstrumentChange={handleInstrumentChange} />
           </div>
         </div>
 

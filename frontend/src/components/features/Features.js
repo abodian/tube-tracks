@@ -1,13 +1,33 @@
+import styles from "./Features.module.css"
 import React, { useState } from "react";
 require('./Features.css')
 
-function Features({backgroundAudio, onBackingChange}) {
+
+function Features({backgroundAudio, onBackingChange, checkedInstruments, handleInstrumentChange}) {
   const [selectedTrack, setSelectedTrack] = useState(backgroundAudio.orchestron);
   const handleSelect = (value) => {
     onBackingChange(value);
     setSelectedTrack(value)
   };
 
+function InstrumentButton({ label, checked, onChange, name, color }) {
+  const style = {
+  "background-color": checked ? color : "white"
+  }
+  let className = styles["toggle-button"] + " " + styles[name] + " "
+  if (checked) {
+    className += styles["on"]
+
+  } else {
+    className += styles["off"]
+  }
+  return (
+    <div>
+      <button style={style} className={className} onClick={() => onChange(name, !checked)}>{label} </button>
+    </div>
+  )
+}
+  
   return (
     <div>
       <b>Ambience</b>
@@ -24,7 +44,8 @@ function Features({backgroundAudio, onBackingChange}) {
             }
           }}
         >
-          Orchestron
+          {selectedTrack === backgroundAudio.orchestron && 'Orchestron (ON)'}
+          {selectedTrack !== backgroundAudio.orchestron && 'Orchestron'}
         </button>
       </div>
       <div>
@@ -39,35 +60,22 @@ function Features({backgroundAudio, onBackingChange}) {
             }
           }}
         >
-          Cosmic Wave
+          {selectedTrack === backgroundAudio.orchestron && 'Cosmic Waves (ON)'}
+          {selectedTrack !== backgroundAudio.orchestron && 'Cosmic Waves'}
         </button>
       </div>
 
 
       <b>Instruments</b>
-
       <div>
         <br></br>
-        <input id="piano" type="checkbox" className="feature-switch" checked></input>
-        <label for="piano">Piano</label>
+        <InstrumentButton label="Piano" name="piano" checked={checkedInstruments.piano} onChange={handleInstrumentChange} color="#009fe3" />
       </div>
       <div>
-        <input
-          id="pizzicato-strings"
-          type="checkbox"
-          className="feature-switch"
-          checked
-        ></input>
-        <label for="pizzicato-strings">Pizzicato Strings</label>
+        <InstrumentButton label="Strings" name="strings" checked={checkedInstruments.strings} onChange={handleInstrumentChange} color="#009fe3" />
       </div>
       <div>
-        <input
-          id="marimba"
-          type="checkbox"
-          className="feature-switch"
-          checked
-        ></input>
-        <label for="marimba">Marimba</label>
+        <InstrumentButton label="Marimba" name="marimba" checked={checkedInstruments.marimba} onChange={handleInstrumentChange} color="#009fe3" />
       </div>
     </div>
   );
