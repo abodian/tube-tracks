@@ -7,8 +7,6 @@ import Features from "../features/Features"
 const Tone = require('tone')
 
 const Homepage = ({ lineData }) => {
-  
-  
   const backgroundAudio = {
     orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
     cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav",
@@ -20,6 +18,7 @@ const Homepage = ({ lineData }) => {
   useEffect(() => {
     if (player) {
       player.stop();
+      player.dispose();
     }
 
     const newPlayer = new Tone.Player(backingTrack).toDestination();
@@ -46,7 +45,7 @@ const Homepage = ({ lineData }) => {
     district: true,
   });
   
-  const [isRunning, setIsRunning] = useState(true);
+  const [isRunning, setIsRunning] = useState(false);
  
   
   const handleStop = () => {

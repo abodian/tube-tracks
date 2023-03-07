@@ -20,7 +20,7 @@ const PlayStop = ({ stop, start }) => {
           <img src="/images/stop.png" alt="pause button" onClick={stop}></img>
         </div>
         <div className={styles.instruct}>
-          Turn up your speakers, relax and press play!
+          Press play, then choose an ambience on the left!
         </div>
         <div class={styles.volume}>
           <div className={styles.speaker}>

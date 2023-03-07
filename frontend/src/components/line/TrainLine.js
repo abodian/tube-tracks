@@ -1,5 +1,5 @@
 import "./TrainLine.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 const Tone = require('tone')
 
 function TrainLine({ lineData, checkedLines }) {
