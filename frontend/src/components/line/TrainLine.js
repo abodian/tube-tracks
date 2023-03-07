@@ -29,7 +29,7 @@ function TrainLine({ lineData, checkedLines }) {
 
   const bass = {
     EBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/E_Bass_bip_1_qzgqbn.wav",
-    ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
+    DSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
     FSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/FS_Bass_bip_1_j6rwcm.wav",
     GSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/GS_Bass_bip_1_zam6i0.wav",
     ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678190334/tube-tracks/Bass%20Samples/AS_Bass_bip_1_etl9hi.wav",
@@ -37,60 +37,38 @@ function TrainLine({ lineData, checkedLines }) {
     CSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/C_Bass_bip_1_dhhlfd.wav",
   }
 
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '1') {
-    const player = new Tone.Player(bass.ESBass).toDestination()
+  const playBassNote = (note, settings) => {
+    const player = new Tone.Player(bass[note]).toDestination();
     player.autostart = true;
-    player.volume.value = -20
+    player.volume.value = -25
     player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '2') {
-    const player = new Tone.Player(bass.FSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '3') {
-    const player = new Tone.Player(bass.GSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
-  
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '4') {
-    const player = new Tone.Player(bass.ASBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -20
-    player.loop = false;
-    }
-  });
+  };
 
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '5') {
-    const player = new Tone.Player(bass.BBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -15
-    player.loop = false;
+  document.addEventListener("keypress", (event) => {
+    switch (event.key) {
+      case "1":
+        playBassNote("DSBass");
+        break;
+      case "2":
+        playBassNote("FSBass");
+        break;
+      case "3":
+        playBassNote("GSBass");
+        break;
+      case "4":
+        playBassNote("ASBass");
+        break;
+      case "5":
+        playBassNote("BBass");
+        break;
+      case "6":
+        playBassNote("CSBass");
+        break;
+      default:
+        break;
     }
   });
   
-  document.addEventListener('keypress', function (event) {
-    if (event.key === '6') {
-    const player = new Tone.Player(bass.CSBass).toDestination()
-    player.autostart = true;
-    player.volume.value = -15
-    player.loop = false;
-    }
-  });
-
 
   const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
