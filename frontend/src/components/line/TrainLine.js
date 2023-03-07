@@ -32,7 +32,7 @@ function TrainLine({ lineData, checkedLines }) {
     ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
     FSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/FS_Bass_bip_1_j6rwcm.wav",
     GSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/GS_Bass_bip_1_zam6i0.wav",
-    ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189275/tube-tracks/Bass%20Samples/AS_Bass_bip_1_nm1fec.wav",
+    ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678190334/tube-tracks/Bass%20Samples/AS_Bass_bip_1_etl9hi.wav",
     BBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/B_Bass_bip_1_si5hac.wav",
     CSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/C_Bass_bip_1_dhhlfd.wav",
   }
@@ -68,7 +68,7 @@ function TrainLine({ lineData, checkedLines }) {
     if (event.key === '4') {
     const player = new Tone.Player(bass.ASBass).toDestination()
     player.autostart = true;
-    player.volume.value = -10
+    player.volume.value = -20
     player.loop = false;
     }
   });
