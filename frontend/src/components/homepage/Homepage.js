@@ -50,10 +50,12 @@ const Homepage = ({ lineData }) => {
   
   const handleStop = () => {
     setIsRunning(false);
+    setBackingTrack(null)
   };
 
   const handleStart = () => {
     setIsRunning(true);
+    setBackingTrack(backgroundAudio.orchestron)
   };
 
   const handleCheckboxChange = (line, isChecked) => {

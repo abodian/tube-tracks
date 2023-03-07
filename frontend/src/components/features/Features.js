@@ -2,7 +2,7 @@ import React, { useState } from "react";
 require('./Features.css')
 
 function Features({backgroundAudio, onBackingChange}) {
-  const [selectedTrack, setSelectedTrack] = useState(null);
+  const [selectedTrack, setSelectedTrack] = useState(backgroundAudio.orchestron);
   const handleSelect = (value) => {
     onBackingChange(value);
     setSelectedTrack(value)
@@ -13,11 +13,36 @@ function Features({backgroundAudio, onBackingChange}) {
       <b>Ambience</b>
       <div>
         <br></br>
-        <button className={selectedTrack === backgroundAudio.orchestron ? 'ambience-switch active' : 'ambience-switch'} id="orchestron" onClick={() => handleSelect(backgroundAudio.orchestron)}>Orchestron</button>
+        <button
+          className={selectedTrack === backgroundAudio.orchestron ? 'ambience-switch active' : 'ambience-switch'}
+          id="orchestron"
+          onClick={() => {
+            if (selectedTrack === backgroundAudio.orchestron) {
+              handleSelect(null);
+            } else {
+              handleSelect(backgroundAudio.orchestron);
+            }
+          }}
+        >
+          Orchestron
+        </button>
       </div>
       <div>
-        <button className={selectedTrack === backgroundAudio.cosmicWave ? 'ambience-switch active' : 'ambience-switch'} id="cosmic-waves" onClick={() => handleSelect(backgroundAudio.cosmicWave)}>Cosmic Wave</button>
+        <button
+          className={selectedTrack === backgroundAudio.cosmicWave ? 'ambience-switch active' : 'ambience-switch'}
+          id="cosmic-waves"
+          onClick={() => {
+            if (selectedTrack === backgroundAudio.cosmicWave) {
+              handleSelect(null);
+            } else {
+              handleSelect(backgroundAudio.cosmicWave);
+            }
+          }}
+        >
+          Cosmic Wave
+        </button>
       </div>
+
 
       <b>Instruments</b>
 
