@@ -25,18 +25,81 @@ function TrainLine({ lineData, checkedLines }) {
   FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
   GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
   AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
+
   // FSGSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSGSClusterMarimba_bip_2_oepjei.wav",
   FSDSChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
   GSESChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
   CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav"
+  const bass = {
+    EBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/E_Bass_bip_1_qzgqbn.wav",
+    ESBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/ES_Bass_bip_1_qj6wgi.wav",
+    FSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/FS_Bass_bip_1_j6rwcm.wav",
+    GSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/GS_Bass_bip_1_zam6i0.wav",
+    ASBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678190334/tube-tracks/Bass%20Samples/AS_Bass_bip_1_etl9hi.wav",
+    BBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/B_Bass_bip_1_si5hac.wav",
+    CSBass: "https://res.cloudinary.com/did9lgedz/video/upload/v1678189276/tube-tracks/Bass%20Samples/C_Bass_bip_1_dhhlfd.wav",
   }
+
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '1') {
+    const player = new Tone.Player(bass.ESBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '2') {
+    const player = new Tone.Player(bass.FSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '3') {
+    const player = new Tone.Player(bass.GSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '4') {
+    const player = new Tone.Player(bass.ASBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -20
+    player.loop = false;
+    }
+  });
+
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '5') {
+    const player = new Tone.Player(bass.BBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -15
+    player.loop = false;
+    }
+  });
+  
+  document.addEventListener('keypress', function (event) {
+    if (event.key === '6') {
+    const player = new Tone.Player(bass.CSBass).toDestination()
+    player.autostart = true;
+    player.volume.value = -15
+    player.loop = false;
+    }
+  });
 
 
   const backgroundAudio = {tense: "https://res.cloudinary.com/did9lgedz/video/upload/v1678102464/tube-tracks/Ambient_Audio_jwpg3a.wav"}
   const player = new Tone.Player(backgroundAudio.tense).toDestination();
   player.loop = true;
   player.autostart = true;
-  player.volume.value = -30
+  player.volume.value = -40
 
   function pickRandomKey(obj) {
     const keys = Object.keys(obj);
@@ -70,10 +133,10 @@ function TrainLine({ lineData, checkedLines }) {
             const stationEl = document.querySelectorAll(`[id^='${stationName}']`)
             console.log(stationEl)
             stationEl.forEach((el) => {
-              el.style.fill = "red";
+              el.classList.add('pulse');
               setTimeout(() => {
-                el.style.fill = "";
-              }, 1000);
+                el.classList.remove('pulse');
+              }, 3000);
             });
           }
         });
@@ -100,11 +163,11 @@ function TrainLine({ lineData, checkedLines }) {
       {Object.keys(stations).map((line) => (
         checkedLines[line] && (
         <div key={line} className={`line ${line}`}>
-          <svg viewBox="-3800 0 10000 120">
+          <svg viewBox="-1230 0 24450 150">
             <line
-              x1="0"
+              x1="9550"
               y1="50"
-              x2="6000"
+              x2="23000"
               y2="50"
               className="line-color"
             />
@@ -113,17 +176,18 @@ function TrainLine({ lineData, checkedLines }) {
                 <circle
                   id={station}
                   className={"station"}
-                  cx={((index + 0.5) / stations[line].length) * 6000}
+                  cx={((index + 0.2) / stations[line].length) * 13000 + 9800}
                   cy="50"
                   r="20"
                 />
                 <text
                   className="station-name"
-                  x={((index + 0.5) / stations[line].length) * 6000}
-                  y="100"
-                  textAnchor="middle"
-                >
-                  {station}
+                  x={((index + 0.1) / stations[line].length) * 13000 + 9800}
+                  y="90"
+                  textAnchor="middle">
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="0.5em">{station.split(' ')[0]}</tspan>
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[1]}</tspan>
+                    <tspan x={((index + 0.2) / stations[line].length) * 13000 + 9800} dy="1em">{station.split(' ')[2]}</tspan>
                 </text>
               </g>
             ))}
