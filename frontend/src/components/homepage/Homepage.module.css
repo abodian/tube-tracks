@@ -100,7 +100,7 @@
   width: 54px;
   padding: 18px;
 }
-input {
+.tracks input, .features input{
   position: absolute;
   opacity: 0;
   height: 0;
@@ -174,12 +174,6 @@ input:checked + label:after {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-input {
-  position: absolute;
-  opacity: 0;
-  height: 0;
-  width: 0;
-}
 label {
   position: relative;
   display: block;
