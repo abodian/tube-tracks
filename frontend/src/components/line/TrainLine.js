@@ -3,6 +3,16 @@ import React, { useEffect, useState } from "react";
 const Tone = require("tone");
 
 function TrainLine({ lineData, checkedLines }) {
+  const [zoom, setZoom] = useState(1);
+
+  const handleZoomIn = () => {
+    setZoom(zoom + 0.1);
+  };
+
+  const handleZoomOut = () => {
+    setZoom(zoom - 0.1);
+  };
+
   const stations = {
     victoria: [
       "Brixton",
@@ -404,7 +414,9 @@ function TrainLine({ lineData, checkedLines }) {
   });
 
   return (
-    <div className="train-line">
+    <div className="train-line" style={{ zoom: zoom }}>
+      <button onClick={handleZoomIn}>Zoom In</button>
+      <button onClick={handleZoomOut}>Zoom Out</button>
       {Object.keys(stations).map(
         (line) =>
           checkedLines[line] && (
