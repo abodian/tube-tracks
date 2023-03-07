@@ -1,87 +1,57 @@
+import styles from "./TrackList.module.css";
+console.log(styles)
+function TrackButton({ label, checked, onChange, name, color }) {
+  const style = {
+  "background-color": checked ? color : "white"
+  }
+  let className = styles["toggle-button"] + " " + styles[name] + " "
+  if (checked) {
+    className += styles["on"]
+
+  } else {
+    className += styles["off"]
+  }
+  return (
+    <div>
+      <button style={style} className={className} onClick={() => onChange(name, !checked)}>{label} </button>
+    </div>
+
+
+  )
+}
+
+
 function TrackList({ handleCheckboxChange, checkedLines }) {
   return (
     <div>
+      <TrackButton label="Victoria" name="victoria" checked={checkedLines.victoria} onChange={handleCheckboxChange} color="#009fe3" />
 
       <div>
-      <input
-          type="checkbox"
-          id="victoria-checkbox"
-          name="victoria"
-          checked={checkedLines.victoria}
-          onChange={handleCheckboxChange}
-        />
-        <label for="victoria-checkbox">Victoria</label>
+        <TrackButton label="Jubilee" name="jubilee" checked={checkedLines.jubilee} onChange={handleCheckboxChange} color="#6a7278" />
       </div>
 
       <div>
-        <input 
-          type="checkbox" 
-          id="jubilee-checkbox" 
-          name="jubilee" 
-          checked={checkedLines.jubilee}
-          onChange={handleCheckboxChange} 
-        />
-        <label for="jubilee-checkbox">Jubilee</label>
+        <TrackButton label="Central" name="central" checked={checkedLines.central} onChange={handleCheckboxChange} color="#dc241f" />
       </div>
 
       <div>
-        <input 
-          type="checkbox" 
-          id="central-checkbox" 
-          name="central" 
-          checked={checkedLines.central}
-          onChange={handleCheckboxChange} />
-        <label for="central-checkbox">Central</label>
+        <TrackButton label="Metropolitan" name="metropolitan" checked={checkedLines.metropolitan} onChange={handleCheckboxChange} color="#751056" />
       </div>
 
       <div>
-        <input           
-          type="checkbox" 
-          id="metropolitan-checkbox" 
-          name="metropolitan" 
-          checked={checkedLines.metropolitan}
-          onChange={handleCheckboxChange} />
-        <label for="metropolitan-checkbox">Metropolitan</label>
+        <TrackButton label="Northern" name="northern" checked={checkedLines.northern} onChange={handleCheckboxChange} color="#000" />
       </div>
 
       <div>
-        <input           
-          type="checkbox" 
-          id="northern-checkbox" 
-          name="northern" 
-          checked={checkedLines.northern}
-          onChange={handleCheckboxChange} />
-        <label for="northern-checkbox">Northern</label>
+        <TrackButton label="Bakerloo" name="bakerloo" checked={checkedLines.bakerloo} onChange={handleCheckboxChange} color="#b26300" />
       </div>
 
       <div>
-        <input           
-          type="checkbox" 
-          id="bakerloo-checkbox" 
-          name="bakerloo" 
-          checked={checkedLines.bakerloo}
-          onChange={handleCheckboxChange} />
-        <label for="bakerloo-checkbox">Bakerloo</label>
+        <TrackButton label="Piccadilly" name="piccadilly" checked={checkedLines.piccadilly} onChange={handleCheckboxChange} color="#0019a8" />
       </div>
 
       <div>
-        <input           
-          type="checkbox" 
-          id="piccadilly-checkbox" 
-          name="piccadilly" 
-          checked={checkedLines.piccadilly}
-          onChange={handleCheckboxChange} />
-        <label for="piccadilly-checkbox">Piccadilly</label>
-      </div>
-
-      <div>
-        <input           
-          type="checkbox" 
-          id="district-checkbox" 
-          name="district" 
-          checked={checkedLines.district}
-          onChange={handleCheckboxChange} />
-        <label for="district-checkbox">District</label>
+        <TrackButton label="District" name="district" checked={checkedLines.district} onChange={handleCheckboxChange} color="#007229" />
       </div>
 
     </div>

@@ -25,9 +25,7 @@ const Homepage = ({ lineData }) => {
     setIsRunning(true);
   };
 
-  const handleCheckboxChange = (event) => {
-    const line = event.target.name;
-    const isChecked = event.target.checked;
+  const handleCheckboxChange = (line, isChecked) => {
     setCheckedLines({ ...checkedLines, [line]: isChecked });
   };
 
