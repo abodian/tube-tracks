@@ -110,7 +110,7 @@ const Homepage = ({ lineData }) => {
 
         {isRunning ? (
           <div className={styles.theMap}>
-            <TrainLine checkedLines={checkedLines} lineData={lineData} />
+            <TrainLine checkedLines={checkedLines} lineData={lineData} checkedInstruments={checkedInstruments} />
           </div>
         ) : (
           <div className={styles.jumbo}>
