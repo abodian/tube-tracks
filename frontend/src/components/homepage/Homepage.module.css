@@ -64,10 +64,13 @@
 }
 .tracks h1,
 .features h1 {
-  font-size: 1.4rem;
-  font-family: "Cabin";
+  font-size: 25px;
   color: #720f54;
   margin-top: 0;
+  font-family: arial black;
+  font-weight: bold;
+  font-style: oblique;
+  text-align: center;
 }
 .tracks div,
 .features div {
