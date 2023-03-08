@@ -43,17 +43,23 @@
   margin-bottom: 12px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.jumbo{
+.jumbo {
   width: 99%;
-  margin-left:28px;
+  margin-left: 28px;
 }
 .theMap {
   overflow-x: auto;
 }
-.jumbo h1{
-  font-family: 'Cabin';
+.jumbo h1 {
+  font-family: "Cabin";
   text-align: center;
   font-size: 5rem;
+  color: #720f54;
+}
+.jumbo h2 {
+  font-family: "Cabin";
+  text-align: center;
+  font-size: 2.5rem;
   color: #720f54;
 }
 .tracks h1,
@@ -72,6 +78,14 @@
   order: solid 1px #999;
   border-radius: 12px;
 }
+
+.description {
+  font-family: "Cabin";
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 60px;
+}
+
 .theMap {
   padding: 12px;
 }

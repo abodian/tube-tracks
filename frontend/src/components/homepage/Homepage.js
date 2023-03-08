@@ -115,7 +115,18 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
           </div>
         ) : (
           <div className={styles.jumbo}>
-            <h1>Click the play button to open the map</h1>
+            <h2>Welcome to Tube Tracks, the TfL Tube Arrival Data Sonification App!</h2>
+            <div className={styles.description}>
+            <h3>Maker's Academy Final Project by a group of 4 students - Alex, Terry, Josh and Abbas</h3>
+              <p>This app comes up with the answer for a question you didn't realise you had!</p>
+              <p>Forget about what the meaning of life is, how about 'What would <b>live</b> London Tube arrival data sound like?'.</p>
+              <p>Well look no further, when you press play you will be greeted by an Orchestron and the luscious tones of sampled instruments being triggered by <b>live</b> Tfl Tube Arrival Data.</p>
+              <p>Have a play around, turn instruments on and off, turn lines on and off, and also why not try pressing any number between 1 and 6....see what happens!</p>
+              <p>Bored of the Orchestron? Try Cosmic Wave, an alternative but suspiciously similar drone to accompany the Tfl madness.</p>
+              <p>Disclaimer: your auditory experience is entirely down to TfL....a member of the infamous British transport system. You have been warned!</p>
+              <p>Enjoy,</p>
+              <p><b>Auditory Analytics</b></p>
+            </div>
           </div>
         )}
       </div>
