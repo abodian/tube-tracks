@@ -3,6 +3,7 @@ import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine";
 import TrackList from "../trackList/TrackList";
 import AudioControl from "../app/audioControl/AudioControl";
+import ZoomControl from "../app/zoomControl/ZoomControl";
 
 const Homepage = ({ lineData }) => {
   const [checkedLines, setCheckedLines] = useState({
@@ -16,6 +17,15 @@ const Homepage = ({ lineData }) => {
     district: true,
   });
   const [isRunning, setIsRunning] = useState(true);
+  const [zoom, setZoom] = useState(1);
+
+  const handleZoomIn = () => {
+    setZoom(zoom + 0.1);
+  };
+
+  const handleZoomOut = () => {
+    setZoom(zoom - 0.1);
+  };
 
   const handleStop = () => {
     setIsRunning(false);
@@ -40,7 +50,9 @@ const Homepage = ({ lineData }) => {
         <div className={styles.strapline}>
           Tube Tracks <span>Guaranteed to wake you up!</span>
         </div>
-
+        <div className={styles.zoom}>
+          <ZoomControl zoomIn={handleZoomIn} zoomOut={handleZoomOut} />
+        </div>
         <div className={styles.instructions}>
           <AudioControl stop={handleStop} start={handleStart} />
         </div>
@@ -77,7 +89,11 @@ const Homepage = ({ lineData }) => {
 
         {isRunning ? (
           <div className={styles.theMap}>
-            <TrainLine checkedLines={checkedLines} lineData={lineData} />
+            <TrainLine
+              checkedLines={checkedLines}
+              lineData={lineData}
+              newZoom={zoom}
+            />
           </div>
         ) : (
           <div className={styles.jumbo}>
