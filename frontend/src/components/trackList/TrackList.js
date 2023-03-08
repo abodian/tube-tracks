@@ -52,6 +52,14 @@ function TrackList({ handleCheckboxChange, checkedLines }) {
         <TrackButton label="District" name="district" checked={checkedLines.district} onChange={handleCheckboxChange} color="#007229" />
       </div>
 
+      <div>
+        <TrackButton label="Hammersmith & City" name="hammmersmith" checked={checkedLines.hammersmith} onChange={handleCheckboxChange} color="#F3A9BB" />
+      </div>
+
+      <div>
+        <TrackButton label="Circle" name="circle" checked={checkedLines.circle} onChange={handleCheckboxChange} color="#FFD300" />
+      </div>
+
     </div>
   );
 }
