@@ -4,7 +4,7 @@ import Keyboard from "../app/keyboard/Keyboard";
 
 const Tone = require("tone");
 
-function TrainLine({ lineData, checkedLines }) {
+function TrainLine({ lineData, checkedLines, isPiano }) {
   const stations = {
     victoria: [
       "Brixton",
@@ -511,7 +511,8 @@ function TrainLine({ lineData, checkedLines }) {
             </div>
           )
       )}
-      <Keyboard></Keyboard>
+
+      <Keyboard isPiano={isPiano}></Keyboard>
     </div>
   );
 }

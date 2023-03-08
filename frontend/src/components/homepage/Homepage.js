@@ -3,6 +3,7 @@ import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine";
 import TrackList from "../trackList/TrackList";
 import AudioControl from "../app/audioControl/AudioControl";
+import PianoControl from "../app/keyboard/PianoControl";
 
 const Homepage = ({ lineData }) => {
   const [checkedLines, setCheckedLines] = useState({
@@ -15,6 +16,12 @@ const Homepage = ({ lineData }) => {
     piccadilly: true,
     district: true,
   });
+
+  const [isPiano, setIsPiano] = useState(true);
+
+  const handlePiano = () => {
+    setIsPiano(!isPiano);
+  };
   const [isRunning, setIsRunning] = useState(true);
 
   const handleStop = () => {
@@ -40,7 +47,9 @@ const Homepage = ({ lineData }) => {
         <div className={styles.strapline}>
           Tube Tracks <span>Guaranteed to wake you up!</span>
         </div>
-
+        <div className={styles.pianoButton}>
+          <PianoControl initialVisible={isPiano} toggle={handlePiano} />
+        </div>
         <div className={styles.instructions}>
           <AudioControl stop={handleStop} start={handleStart} />
         </div>
@@ -77,7 +86,11 @@ const Homepage = ({ lineData }) => {
 
         {isRunning ? (
           <div className={styles.theMap}>
-            <TrainLine checkedLines={checkedLines} lineData={lineData} />
+            <TrainLine
+              checkedLines={checkedLines}
+              lineData={lineData}
+              isPiano={isPiano}
+            />
           </div>
         ) : (
           <div className={styles.jumbo}>

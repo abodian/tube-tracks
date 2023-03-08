@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Keyboard.module.css";
 
-const Keyboard = () => {
+const Keyboard = ({ isPiano }) => {
+  const [pianoStyle, setPianoStyle] = useState({});
+  useEffect(() => {
+    function handlePiano() {
+      isPiano ? setPianoStyle(`${styles.vis}`) : setPianoStyle(`${styles.hid}`);
+    }
+
+    handlePiano();
+  }, [isPiano]);
+
   return (
-    <div className={styles.container}>
+    <div className={`${pianoStyle}`}>
       <div className={styles.keyboard}>
         <div className={styles.key}></div>
         <div className={styles.key}></div>
