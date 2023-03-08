@@ -21,7 +21,7 @@
 }
 .speaker img {
   width: 68px;
-  padding: 0;
+  padding: 8px 12px 6px 0;
 }
 
 .instruct {
@@ -35,9 +35,12 @@
   flex-direction: column;
   width:140px;
   font-size: 0.8rem;
+  align-items: center;
 }
 .volume input[type="range"]{
  
   width:80px;
 }
-
+.volumeText{
+text-align: center;
+}
