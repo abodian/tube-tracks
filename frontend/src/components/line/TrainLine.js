@@ -353,12 +353,10 @@ function TrainLine({ lineData, checkedLines, checkedInstruments, volume }) {
   };
 
   const playBassNote = (note) => {
-    // console.log("!!!!!!!!!!!!", volume);
+    console.log("!!!!!!!!!!!!", volume);
     const player = new Tone.Player(bass[note]).toDestination();
     player.autostart = true;
     player.volume.value = volume / 100;
-
-    // player.volume.value = -25;
     player.loop = false;
   };
 
