@@ -74,17 +74,22 @@ svg {
   fill: var(--line-color);
 }
 
+.line-container {
+  display: flex;
+  justify-content: flex-start;;
+  min-width: 1000px;
+  margin-left: 3300px;
+}
+
 .line-name {
-  margin: 10px 0 0 0;
-  margin-left: 800px;
   font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: normal;
   color: #555;
+  text-align: center;
+  width: 1700px;
 }
-
-
 
 @media only screen and (max-width: 800px) {
   .train-line {
