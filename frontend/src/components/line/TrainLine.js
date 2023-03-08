@@ -2,7 +2,7 @@ import "./TrainLine.css";
 import React, { useEffect } from "react";
 const Tone = require('tone')
 
-function TrainLine({ lineData, checkedLines }) {
+function TrainLine({ lineData, checkedLines, checkedInstruments }) {
   const stations = {
     victoria: ["Brixton", "Stockwell", "Vauxhall", "Pimlico", "Victoria", "Green Park", "Oxford Circus", "Warren Street", "Euston", "King's Cross", "Highbury", "Finsbury Park", "Seven Sisters", "Tottenham Hale", "Blackhorse Road", "Walthamstow Central"],
     jubilee: ["Stanmore", "Canons Park", "Queensbury", "Kingsbury", "Wembley Park", "Neasden", "Dollis Hill", "Willesden Green", "Kilburn", "West Hampstead", "Finchley Road", "Swiss Cottage", "St. Johns Wood", "Baker Street", "Bond Street", "Green Park", "Westminster", "Waterloo", "Southwark", "London Bridge", "Bermondsey", "Canada Water", "Canary Wharf", "North Greenwich", "Canning Town", "West Ham", "Stratford"],
@@ -15,19 +15,25 @@ function TrainLine({ lineData, checkedLines }) {
   };
 
   const notes = {
-  CS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
-  DS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
-  FS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
-  GS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
-  AS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
-  CS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126419/tube-tracks/C_2_Pizz_1_n5g82j.wav",
-  DS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126425/tube-tracks/D__Pizz_1_x6r7vr.wav",
-  FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
-  GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
-  AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
-  FSDSChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
-  GSESChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
-  CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav",
+    piano: {
+      CS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/C_3_1_z6dqvg.wav",
+      DS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/D_3_1_aghaaz.wav",
+      FS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/F_3_1_xienr0.wav",
+      GS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117939/tube-tracks/G_3_1_atwwuv.wav",
+      AS3Piano: "https://res.cloudinary.com/did9lgedz/video/upload/v1678117938/tube-tracks/A_3_1_o0knhr.wav",
+    },
+    strings: {
+      CS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126419/tube-tracks/C_2_Pizz_1_n5g82j.wav",
+      DS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126425/tube-tracks/D__Pizz_1_x6r7vr.wav",
+      FS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
+      GS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
+      AS2Pizz: "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
+    },
+    marimba: {
+      FSDSChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
+      GSESChMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
+      CSDSClusterMarimba: "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav",
+    },
   }
   
   const bass = {
@@ -72,13 +78,19 @@ function TrainLine({ lineData, checkedLines }) {
     }
   });
 
-  function pickRandomKey(obj) {
-    const keys = Object.keys(obj);
-    const randomIndex = Math.floor(Math.random() * keys.length);
-    const randomKey = keys[randomIndex]
-    const randomValue = obj[randomKey]
-    return randomValue
+  // this is handling picking random notes and also checking to see if instruments have been
+  // switched on or not
+  function pickRandomKey(obj, checkedInstruments) {
+    const categories = Object.keys(obj);
+    const availableCategories = categories.filter(category => checkedInstruments[category]);
+    const randomCategory = availableCategories[Math.floor(Math.random() * availableCategories.length)];
+    const notesInCategory = obj[randomCategory];
+    const notes = Object.keys(notesInCategory);
+    const randomNote = notes[Math.floor(Math.random() * notes.length)];
+    return notesInCategory[randomNote];
   }
+  
+  
 
   useEffect(() => {
     const checkExpectedArrival = () => {
@@ -113,11 +125,12 @@ function TrainLine({ lineData, checkedLines }) {
         });
 
         matchingTrains.forEach((train, index) => {
-          const randomKey = pickRandomKey(notes)
+          const randomKey = pickRandomKey(notes, checkedInstruments)
           const delay = Math.random() * 1000;
           setTimeout(() => {
             const arrivalPlayer = new Tone.Player(randomKey).toDestination()
             arrivalPlayer.autostart = true;
+            arrivalPlayer.volume.value = -10
           }, index * 1000 + delay); // delay each sound by 1 second
         });
       }
