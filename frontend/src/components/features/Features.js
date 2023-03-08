@@ -32,7 +32,6 @@ function InstrumentButton({ label, checked, onChange, name, color }) {
     <div>
       <div className='features-title'>Ambience</div>
     <div>
-        <br></br>
         <button
           className={selectedTrack === backgroundAudio.orchestron ? 'ambience-switch active' : 'ambience-switch'}
           id="orchestron"
@@ -68,7 +67,6 @@ function InstrumentButton({ label, checked, onChange, name, color }) {
 
       <div className='features-title'>Instruments</div>
       <div>
-        <br></br>
         <InstrumentButton label="Piano" name="piano" checked={checkedInstruments.piano} onChange={handleInstrumentChange} color="#009fe3" />
       </div>
       <div>
