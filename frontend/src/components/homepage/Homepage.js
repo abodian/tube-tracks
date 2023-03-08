@@ -45,6 +45,8 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
     bakerloo: true,
     piccadilly: true,
     district: true,
+    hammersmith: true,
+    circle: true,
   });
 
   const [checkedInstruments, setCheckedInstruments] = useState({

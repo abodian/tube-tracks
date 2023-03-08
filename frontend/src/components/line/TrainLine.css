@@ -48,6 +48,14 @@ svg {
   --line-color: #007229;
 }
 
+.hammersmith {
+  --line-color: #F3A9BB;
+}
+
+.circle {
+  --line-color: #FFD300;
+}
+
 .line-color {
   stroke: var(--line-color);
   stroke-width: 10px;
