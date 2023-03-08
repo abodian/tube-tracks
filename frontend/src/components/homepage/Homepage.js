@@ -6,7 +6,7 @@ import AudioControl from "../app/audioControl/AudioControl";
 import Features from "../features/Features"
 const Tone = require('tone')
 
-const Homepage = ({ lineData }) => {
+const Homepage = ({ lineData, handleIsRunningChange }) => {
   const backgroundAudio = {
     orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
     cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav",
@@ -14,6 +14,8 @@ const Homepage = ({ lineData }) => {
   const [backingTrack, setBackingTrack] = useState()
 
   const [player, setPlayer] = useState(null);
+
+  const [isRunning, setIsRunning] = useState(false)
 
   useEffect(() => {
     if (player) {
@@ -51,16 +53,15 @@ const Homepage = ({ lineData }) => {
     marimba: true,
   })
   
-  const [isRunning, setIsRunning] = useState(false);
- 
-  
   const handleStop = () => {
     setIsRunning(false);
+    handleIsRunningChange(false)
     setBackingTrack(null)
   };
 
   const handleStart = () => {
     setIsRunning(true);
+    handleIsRunningChange(true)
     setBackingTrack(backgroundAudio.orchestron)
   };
 
