@@ -4,11 +4,9 @@ import styles from "./AudioControl.module.css";
 
 const Tone = require("tone");
 
-const PlayStop = ({ stop, start }) => {
-  const [volume, setVolume] = useState(50);
-
+const PlayStop = ({ stop, start, onVolumeChange, volume }) => {
   const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
+    onVolumeChange(event.target.value);
   };
   return (
     <>
@@ -26,7 +24,7 @@ const PlayStop = ({ stop, start }) => {
           <div className={styles.speaker}>
             <img src="/images/speaker.png" alt="adjust volume"></img>
           </div>
-          <div className={styles.jumbo}>
+          <div>
             <input
               type="range"
               min="0"
@@ -34,7 +32,7 @@ const PlayStop = ({ stop, start }) => {
               value={volume}
               onChange={handleVolumeChange}
             />
-            <span>{volume}%</span>
+            <div>{volume}%</div>
           </div>
         </div>
       </div>

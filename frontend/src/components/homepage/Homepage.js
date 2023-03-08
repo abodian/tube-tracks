@@ -3,17 +3,25 @@ import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine";
 import TrackList from "../trackList/TrackList";
 import AudioControl from "../app/audioControl/AudioControl";
-import Features from "../features/Features"
-const Tone = require('tone')
+import Features from "../features/Features";
+const Tone = require("tone");
 
 const Homepage = ({ lineData }) => {
   const backgroundAudio = {
-    orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
-    cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav",
+    orchestron:
+      "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
+    cosmicWave:
+      "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav",
   };
-  const [backingTrack, setBackingTrack] = useState()
+  const [backingTrack, setBackingTrack] = useState();
 
   const [player, setPlayer] = useState(null);
+
+  const [volume, setVolume] = useState(50);
+
+  function handleVolumeChange(newVolume) {
+    setVolume(newVolume);
+  }
 
   useEffect(() => {
     if (player) {
@@ -49,19 +57,18 @@ const Homepage = ({ lineData }) => {
     piano: true,
     strings: true,
     marimba: true,
-  })
-  
+  });
+
   const [isRunning, setIsRunning] = useState(false);
- 
-  
+
   const handleStop = () => {
     setIsRunning(false);
-    setBackingTrack(null)
+    setBackingTrack(null);
   };
 
   const handleStart = () => {
     setIsRunning(true);
-    setBackingTrack(backgroundAudio.orchestron)
+    setBackingTrack(backgroundAudio.orchestron);
   };
 
   const handleCheckboxChange = (line, isChecked) => {
@@ -69,13 +76,13 @@ const Homepage = ({ lineData }) => {
   };
 
   const handleBackingChange = (value) => {
-    setBackingTrack(value)
-  }
-  
+    setBackingTrack(value);
+  };
+
   const handleInstrumentChange = (instrument, isChecked) => {
-    setCheckedInstruments({...checkedInstruments, [instrument]: isChecked})
-  }
-  console.log(checkedInstruments)
+    setCheckedInstruments({ ...checkedInstruments, [instrument]: isChecked });
+  };
+  // console.log(checkedInstruments);
 
   return (
     <>
@@ -90,7 +97,12 @@ const Homepage = ({ lineData }) => {
         </div>
 
         <div className={styles.instructions}>
-          <AudioControl stop={handleStop} start={handleStart} />
+          <AudioControl
+            stop={handleStop}
+            start={handleStart}
+            volume={volume}
+            onVolumeChange={handleVolumeChange}
+          />
         </div>
       </div>
       <div className={styles.content}>
@@ -104,13 +116,23 @@ const Homepage = ({ lineData }) => {
           </div>
           <div className={styles.features}>
             <h1>Features</h1>
-            <Features backgroundAudio={backgroundAudio} onBackingChange={handleBackingChange} checkedInstruments={checkedInstruments} handleInstrumentChange={handleInstrumentChange} />
+            <Features
+              backgroundAudio={backgroundAudio}
+              onBackingChange={handleBackingChange}
+              checkedInstruments={checkedInstruments}
+              handleInstrumentChange={handleInstrumentChange}
+            />
           </div>
         </div>
 
         {isRunning ? (
           <div className={styles.theMap}>
-            <TrainLine checkedLines={checkedLines} lineData={lineData} checkedInstruments={checkedInstruments} />
+            <TrainLine
+              checkedLines={checkedLines}
+              lineData={lineData}
+              checkedInstruments={checkedInstruments}
+              volume={volume}
+            />
           </div>
         ) : (
           <div className={styles.jumbo}>
