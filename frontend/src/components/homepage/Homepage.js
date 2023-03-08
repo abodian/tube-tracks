@@ -1,10 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Homepage.module.css";
 import TrainLine from "../line/TrainLine";
 import TrackList from "../trackList/TrackList";
 import AudioControl from "../app/audioControl/AudioControl";
+import Features from "../features/Features"
+const Tone = require('tone')
 
 const Homepage = ({ lineData }) => {
+  const backgroundAudio = {
+    orchestron: "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
+    cosmicWave: "https://res.cloudinary.com/did9lgedz/video/upload/v1678202659/tube-tracks/Backing_Track_2_l2ibki.wav",
+  };
+  const [backingTrack, setBackingTrack] = useState()
+
+  const [player, setPlayer] = useState(null);
+
+  useEffect(() => {
+    if (player) {
+      player.stop();
+      player.dispose();
+    }
+
+    const newPlayer = new Tone.Player(backingTrack).toDestination();
+    newPlayer.loop = true;
+    newPlayer.autostart = true;
+    newPlayer.volume.value = -20;
+
+    setPlayer(newPlayer);
+
+    return () => {
+      newPlayer.stop();
+      newPlayer.dispose();
+    };
+  }, [backingTrack]);
+
   const [checkedLines, setCheckedLines] = useState({
     victoria: true,
     jubilee: true,
@@ -15,20 +44,28 @@ const Homepage = ({ lineData }) => {
     piccadilly: true,
     district: true,
   });
-  const [isRunning, setIsRunning] = useState(true);
-
+  
+  const [isRunning, setIsRunning] = useState(false);
+ 
+  
   const handleStop = () => {
     setIsRunning(false);
+    setBackingTrack(null)
   };
 
   const handleStart = () => {
     setIsRunning(true);
+    setBackingTrack(backgroundAudio.orchestron)
   };
 
   const handleCheckboxChange = (line, isChecked) => {
     setCheckedLines({ ...checkedLines, [line]: isChecked });
   };
 
+  const handleBackingChange = (value) => {
+    setBackingTrack(value)
+  }
+  console.log(backingTrack)
   return (
     <>
       <div className={styles.header}>
@@ -56,22 +93,7 @@ const Homepage = ({ lineData }) => {
           </div>
           <div className={styles.features}>
             <h1>Features</h1>
-            <div>
-              <input id="Victoria" type="checkbox"></input>
-              <label>Happy</label>
-            </div>
-            <div>
-              <input type="checkbox" name="piccadilly"></input>
-              <label>Sad</label>
-            </div>
-            <div>
-              <input id="Victoria" type="checkbox"></input>
-              <label>Single Notes</label>
-            </div>
-            <div>
-              <input type="checkbox" name="piccadilly"></input>
-              <label>Chords</label>
-            </div>
+            <Features backgroundAudio={backgroundAudio} onBackingChange={handleBackingChange} />
           </div>
         </div>
 
