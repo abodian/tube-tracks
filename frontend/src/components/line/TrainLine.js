@@ -177,7 +177,11 @@ function TrainLine({ lineData, checkedLines, checkedInstruments }) {
               </g>
             ))}
           </svg>
-          <h2 className="line-name">{line}</h2>
+          <div class="line-container">
+            <h2 class="line-name">{line}</h2>
+            <h2 class="line-name">{line}</h2>
+            <h2 class="line-name">{line}</h2>
+          </div>
         </div>
         )
       ))}
