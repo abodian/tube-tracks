@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const Tone = require('tone')
 
 function TrainLine({ lineData, checkedLines, checkedInstruments }) {
-  const [zoom, setZoom] = useState(1)
+  const [zoom, setZoom] = useState(1.1)
   const stations = {
     victoria: ["Brixton Underground Station", "Stockwell Underground Station", "Vauxhall Underground Station", "Pimlico Underground Station", "Victoria Underground Station", "Green Park Underground Station", "Oxford Circus Underground Station", "Warren Street Underground Station", "Euston Underground Station", "King's Cross Underground Station", "Highbury Underground Station", "Finsbury Park Underground Station", "Seven Sisters Underground Station", "Tottenham Hale Underground Station", "Blackhorse Road Underground Station", "Walthamstow Central Underground Station"],
     jubilee: ["Stanmore Underground Station", "Canons Park Underground Station", "Queensbury Underground Station Underground Station", "Kingsbury Underground Station Underground Station", "Wembley Park Underground Station", "Neasden Underground Station", "Dollis Hill Underground Station", "Willesden Green Underground Station", "Kilburn Underground Station", "West Hampstead Underground Station", "Finchley Road Underground Station", "Swiss Cottage Underground Station", "St. Johns Wood Underground Station", "Baker Street Underground Station", "Bond Street Underground Station", "Green Park Underground Station", "Westminster Underground Station", "Waterloo Underground Station", "Southwark Underground Station", "London Bridge Underground Station", "Bermondsey Underground Station", "Canada Water Underground Station", "Canary Wharf Underground Station", "North Greenwich Underground Station", "Canning Town Underground Station", "West Ham Underground Station", "Stratford Underground Station"],
@@ -162,9 +162,9 @@ function TrainLine({ lineData, checkedLines, checkedInstruments }) {
       {Object.keys(stations).map((line) => (
         checkedLines[line] && (
         <div key={line} className={`line ${line}`}>
-          <svg viewBox="-1230 0 24450 150">
+          <svg viewBox="-1230 0 24400 150">
             <line
-              x1="9550"
+              x1="9500"
               y1="50"
               x2="23000"
               y2="50"

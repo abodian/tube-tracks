@@ -89,7 +89,7 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
           </a>
         </div>
         <div className={styles.strapline}>
-          Tube Tracks <span>Guaranteed to wake you up!</span>
+          Tube Tracks <span>TfL Arrival Data Sonification</span>
         </div>
 
         <div className={styles.instructions}>
