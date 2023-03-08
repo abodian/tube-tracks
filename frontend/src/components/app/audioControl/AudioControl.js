@@ -2,13 +2,9 @@ import React, { useState } from "react";
 
 import styles from "./AudioControl.module.css";
 
-const Tone = require("tone");
-
-const PlayStop = ({ stop, start }) => {
-  const [volume, setVolume] = useState(50);
-
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
+const PlayStop = ({ stop, start, onZoomChange, zoom }) => {
+  const handleZoomChange = (event) => {
+    onZoomChange(event.target.value);
   };
   return (
     <>
@@ -22,19 +18,20 @@ const PlayStop = ({ stop, start }) => {
         <div className={styles.instruct}>
           Turn up your speakers, relax and press play!
         </div>
+
         <div class={styles.volume}>
           <div className={styles.speaker}>
-            <img src="/images/speaker.png" alt="adjust volume"></img>
+            <img src="/images/zoom.png" alt="adjust volume"></img>
           </div>
-          <div className={styles.jumbo}>
+          <div>
             <input
               type="range"
-              min="0"
-              max="100"
-              value={volume}
-              onChange={handleVolumeChange}
+              min="-1"
+              max="2"
+              value={zoom}
+              onChange={handleZoomChange}
             />
-            <span>{volume}%</span>
+            <div className={styles.volumeText}>{zoom}</div>
           </div>
         </div>
       </div>

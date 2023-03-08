@@ -17,15 +17,11 @@ const Homepage = ({ lineData }) => {
     district: true,
   });
   const [isRunning, setIsRunning] = useState(true);
-  const [zoom, setZoom] = useState(1);
+  const [zoom, setZoom] = useState(0);
 
-  const handleZoomIn = () => {
-    setZoom(zoom + 0.1);
-  };
-
-  const handleZoomOut = () => {
-    setZoom(zoom - 0.1);
-  };
+  function handleZoomChange(newZoom) {
+    setZoom(newZoom);
+  }
 
   const handleStop = () => {
     setIsRunning(false);
@@ -50,11 +46,14 @@ const Homepage = ({ lineData }) => {
         <div className={styles.strapline}>
           Tube Tracks <span>Guaranteed to wake you up!</span>
         </div>
-        <div className={styles.zoom}>
-          <ZoomControl zoomIn={handleZoomIn} zoomOut={handleZoomOut} />
-        </div>
+
         <div className={styles.instructions}>
-          <AudioControl stop={handleStop} start={handleStart} />
+          <AudioControl
+            stop={handleStop}
+            start={handleStart}
+            zoom={zoom}
+            onZoomChange={handleZoomChange}
+          />
         </div>
       </div>
       <div className={styles.content}>
