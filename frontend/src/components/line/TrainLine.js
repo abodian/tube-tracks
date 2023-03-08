@@ -104,7 +104,7 @@ function TrainLine({ lineData, checkedLines, checkedInstruments }) {
           expectedArrival.setHours(hours);
           expectedArrival.setMinutes(minutes);
           expectedArrival.setSeconds(seconds);
-          if (Math.abs(expectedArrival.getTime() - now.getTime()) <= 500) {
+          if (Math.abs(expectedArrival.getTime() - now.getTime()) <= 250) {
             if (checkedLines[train.lineName.toLowerCase()]) {
             console.log(train);
             matchingTrains.push(train);
@@ -139,7 +139,7 @@ function TrainLine({ lineData, checkedLines, checkedInstruments }) {
 
     const intervalId = setInterval(() => {
       checkExpectedArrival();
-    }, 500);
+    }, 1000);
 
     return () => clearInterval(intervalId);
   });
