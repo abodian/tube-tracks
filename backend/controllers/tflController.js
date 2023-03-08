@@ -1,11 +1,15 @@
 const axios = require("axios");
+const API_ID = process.env.REACT_APP_API_ID;
+const API_KEY = process.env.REACT_APP_API_KEY;
+console.log(API_ID);
+console.log(API_KEY);
 
 const TflApiController = {
   LineIndex: async (req, res) => {
     try {
       const line = req.params.line;
       const response = await axios.get(
-        `https://api.tfl.gov.uk/Line/${line}/Arrivals?app_id=a5a934e75afb4bc6815e8d5ec9cd0633&app_key=3f65cf90ca3d4e748dc28439c75e8686`
+        `https://api.tfl.gov.uk/Line/${line}/Arrivals?app_id=${API_ID}app_key=${API_KEY}`
       );
       const responseData = await response.data;
       const transformedData = responseData
