@@ -18,9 +18,14 @@ const Homepage = ({ lineData }) => {
   });
 
   const [isPiano, setIsPiano] = useState(true);
+  const [note, setNote] = useState(null);
 
   const handlePiano = () => {
     setIsPiano(!isPiano);
+  };
+  const handlePlayNote = (note) => {
+    console.log("!!!!!!!", note);
+    setNote(note);
   };
   const [isRunning, setIsRunning] = useState(true);
 
@@ -48,7 +53,11 @@ const Homepage = ({ lineData }) => {
           Tube Tracks <span>Guaranteed to wake you up!</span>
         </div>
         <div className={styles.pianoButton}>
-          <PianoControl initialVisible={isPiano} toggle={handlePiano} />
+          <PianoControl
+            initialVisible={isPiano}
+            toggle={handlePiano}
+            playNote={handlePlayNote}
+          />
         </div>
         <div className={styles.instructions}>
           <AudioControl stop={handleStop} start={handleStart} />
@@ -90,6 +99,7 @@ const Homepage = ({ lineData }) => {
               checkedLines={checkedLines}
               lineData={lineData}
               isPiano={isPiano}
+              note={note}
             />
           </div>
         ) : (

@@ -1,5 +1,5 @@
 import "./TrainLine.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Keyboard from "../app/keyboard/Keyboard";
 
 const Tone = require("tone");
@@ -355,8 +355,9 @@ function TrainLine({ lineData, checkedLines, isPiano }) {
     player.loop = false;
   };
 
-  document.addEventListener("keypress", (event) => {
-    switch (event.key) {
+  const handlePlayKey = (key) => {
+    console.log("!!!!!!!!!!", key);
+    switch (key) {
       case "1":
         playBassNote("DSBass");
         break;
@@ -378,6 +379,10 @@ function TrainLine({ lineData, checkedLines, isPiano }) {
       default:
         break;
     }
+  };
+
+  document.addEventListener("keypress", (event) => {
+    handlePlayKey(event.key);
   });
 
   const backgroundAudio = {
@@ -512,7 +517,7 @@ function TrainLine({ lineData, checkedLines, isPiano }) {
           )
       )}
 
-      <Keyboard isPiano={isPiano}></Keyboard>
+      <Keyboard isPiano={isPiano} playNote={handlePlayKey}></Keyboard>
     </div>
   );
 }

@@ -5,8 +5,8 @@
 .keyboard {
   position: relative;
   display: flex;
-  width: 36rem;
-  height: 18rem;
+  width: 26rem;
+  height: 10rem;
 }
 
 .key {

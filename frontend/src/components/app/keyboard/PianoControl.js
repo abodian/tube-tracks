@@ -10,7 +10,7 @@ const PianoControl = ({ initialVisible, toggle }) => {
       <div className={styles.container}>
         <div className={styles.playnpause}>
           <img
-            src="/images/play.png"
+            src="/images/clef.png"
             width="44px"
             alt="play button"
             onClick={toggle}

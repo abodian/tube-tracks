@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Keyboard.module.css";
 
-const Keyboard = ({ isPiano }) => {
+const Keyboard = ({ isPiano, playNote }) => {
   const [pianoStyle, setPianoStyle] = useState({});
   useEffect(() => {
     function handlePiano() {
@@ -11,15 +11,20 @@ const Keyboard = ({ isPiano }) => {
     handlePiano();
   }, [isPiano]);
 
+  const handleClick = (note) => {
+    console.log("!!!!!!!!@@@@@@@", note);
+    playNote(note);
+  };
+
   return (
     <div className={`${pianoStyle}`}>
       <div className={styles.keyboard}>
-        <div className={styles.key}></div>
-        <div className={styles.key}></div>
-        <div className={styles.key}></div>
-        <div className={styles.key}></div>
-        <div className={styles.key}></div>
-        <div className={styles.key}></div>
+        <div className={styles.key} onClick={() => handleClick("1")}></div>
+        <div className={styles.key} onClick={() => handleClick("2")}></div>
+        <div className={styles.key} onClick={() => handleClick("3")}></div>
+        <div className={styles.key} onClick={() => handleClick("4")}></div>
+        <div className={styles.key} onClick={() => handleClick("5")}></div>
+        <div className={styles.key} onClick={() => handleClick("6")}></div>
         <div className={styles.key}></div>
         <div className={`${styles.blackKey} ${styles.blackKey1}`}></div>
         <div className={`${styles.blackKey} ${styles.blackKey2}`}></div>
