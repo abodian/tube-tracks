@@ -485,7 +485,7 @@ function TrainLine({
           expectedArrival.setHours(hours);
           expectedArrival.setMinutes(minutes);
           expectedArrival.setSeconds(seconds);
-          if (Math.abs(expectedArrival.getTime() - now.getTime()) <= 200) {
+          if (expectedArrival.getTime() === now.getTime()) {
             if (checkedLines[train.lineName.toLowerCase()]) {
               console.log(train);
               matchingTrains.push(train);
@@ -513,15 +513,15 @@ function TrainLine({
           setTimeout(() => {
             const arrivalPlayer = new Tone.Player(randomKey).toDestination();
             arrivalPlayer.autostart = true;
-            arrivalPlayer.volume.value = -10;
-          }, index * 1000 + delay); // delay each sound by 1 second
+            arrivalPlayer.volume.value = -12;
+          }, index * 500 + delay); // delay each sound by 1 second
         });
       }
     };
 
     const intervalId = setInterval(() => {
       checkExpectedArrival();
-    }, 1000);
+    }, 500);
 
     return () => clearInterval(intervalId);
   });
