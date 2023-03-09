@@ -24,7 +24,7 @@ function App() {
   const fetchLineData = async (line) => {
     try {
       console.log('FETCHING API DATA')
-      const response = await axios.get(`http://localhost:8080/line/${line}`);
+      const response = await axios.get(`https://tube-track-backend.onrender.com/line/${line}`);
       return response.data.transformedData;
 
     } catch (error) {
