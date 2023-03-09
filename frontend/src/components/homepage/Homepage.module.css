@@ -29,7 +29,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .tracksNfeatures {
-  width: 240px;
+  max-width: 240px;
 }
 .tracks,
 .features,
@@ -69,7 +69,6 @@
   margin-top: 0;
   font-family: arial black;
   font-weight: bold;
-  font-style: oblique;
   text-align: center;
 }
 .tracks div,
