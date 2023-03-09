@@ -138,7 +138,7 @@ svg {
   background-color: white;
   fill: red;
   stroke: black;
-  stroke-width: 4px;
+  stroke-width: 8px;
   animation-name: pulse;
   animation-duration: 3s;
 }
