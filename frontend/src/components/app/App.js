@@ -24,10 +24,10 @@ function App() {
 
   const fetchLineData = async (line) => {
     try {
-      console.log('FETCHING API DATA')
-      const response = await axios.get(`tube-track-backend/line/${line}`);
-      return response.data.transformedData;
-
+      console.log('FETCHING API DATA');
+      const response = await fetch(`tube-track-backend/line/${line}`);
+      const data = await response.json();
+      return data.transformedData;
     } catch (error) {
       console.error(error);
     }
