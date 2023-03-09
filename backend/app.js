@@ -17,14 +17,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.get("/products/:id", function (req, res, next) {
-  res.json({ msg: "This is CORS-enabled for all origins!" });
-});
-
-app.listen(80, function () {
-  console.log("CORS-enabled web server listening on port 80");
-});
-
 // setup for receiving JSON
 app.use(express.json());
 app.use(logger("dev"));
