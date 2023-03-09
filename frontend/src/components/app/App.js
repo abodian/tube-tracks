@@ -3,7 +3,6 @@ import Homepage from "../homepage/Homepage";
 import axios from "axios";
 import "./App.css";
 
-
 function App() {
   const [lineData, setLineData] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
@@ -24,10 +23,9 @@ function App() {
 
   const fetchLineData = async (line) => {
     try {
-      console.log('FETCHING API DATA');
-      const response = await fetch(`tube-track-backend/line/${line}`);
-      const data = await response.json();
-      return data.transformedData;
+      console.log('FETCHING API DATA')
+      const response = await axios.get(`/line/${line}`);
+      return response.data.transformedData;
     } catch (error) {
       console.error(error);
     }
