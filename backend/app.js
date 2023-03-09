@@ -6,20 +6,19 @@ const lineRouter = require("./routes/line");
 const cors = require("cors");
 
 const app = express();
+app.use(cors());
 
-const whitelist = ["https://tube-tracks.onrender.com"]; // Replace with your frontend URL
+// const whitelist = ["https://tube-tracks.onrender.com"]; // Replace with your frontend URL
 
-const corsOptions = {
-  origin: (origin, callback) => {
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-};
-
-app.use(cors(corsOptions));
+// const corsOptions = {
+//   origin: (origin, callback) => {
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error("Not allowed by CORS"));
+//     }
+//   },
+// };
 
 // setup for receiving JSON
 app.use(express.json());
