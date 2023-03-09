@@ -383,15 +383,15 @@ function TrainLine({
     },
     strings: {
       CS2Pizz:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678126419/tube-tracks/C_2_Pizz_1_n5g82j.wav",
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678384968/tube-tracks/improved%20pizz/CS2_-_Pizz_1_fgtvx6.wav",
       DS2Pizz:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678126425/tube-tracks/D__Pizz_1_x6r7vr.wav",
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678384967/tube-tracks/improved%20pizz/DS2_-_Pizz_1_icmwmk.wav",
       FS2Pizz:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678126436/tube-tracks/F__Pizz_2_1_dejk1j.wav",
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678384967/tube-tracks/improved%20pizz/FS2_-_Pizz_1_msynye.wav",
       GS2Pizz:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678126446/tube-tracks/G_2_Pizz_1_fyhh7e.wav",
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678384967/tube-tracks/improved%20pizz/GS2_-_Pizz_1_uzw6fq.wav",
       AS2Pizz:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678127131/A_2_Pizz_1_ptxiqf.wav",
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678384966/tube-tracks/improved%20pizz/AS2_-_Pizz_1_ksvht7.wav",
     },
     marimba: {
       FSDSChMarimba:
