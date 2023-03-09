@@ -3,10 +3,9 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const lineRouter = require("./routes/line");
-const cors = require("cors");
+// const cors = require("cors");
 
 const app = express();
-app.use(cors());
 
 // const whitelist = ["https://tube-tracks.onrender.com"]; // Replace with your frontend URL
 
@@ -19,6 +18,13 @@ app.use(cors());
 //     }
 //   },
 // };
+
+// app.use(cors(corsOp))
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 // setup for receiving JSON
 app.use(express.json());
