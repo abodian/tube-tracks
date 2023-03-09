@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const app = express();
 
-const whitelist = ["tube-tracks.onrender.com"]; // Replace with your frontend URL
+const whitelist = ["https://tube-tracks.onrender.com"]; // Replace with your frontend URL
 
 const corsOptions = {
   origin: (origin, callback) => {
