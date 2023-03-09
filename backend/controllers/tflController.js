@@ -48,7 +48,13 @@ const TflApiController = {
             }),
           })
         );
-      res.status(200).json({ transformedData });
+      res
+        .status(200)
+        .json({ transformedData })
+        .setHeader(
+          "Access-Control-Allow-Origin",
+          "https://tube-tracks.onrender.com"
+        );
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: error.message });
