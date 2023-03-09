@@ -3,30 +3,17 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const lineRouter = require("./routes/line");
-// const cors = require("cors");
-
+const cors = require("cors");
 const app = express();
 
-// const whitelist = ["https://tube-tracks.onrender.com"]; // Replace with your frontend URL
+app.use(cors());
 
-// const corsOptions = {
-//   origin: (origin, callback) => {
-//     if (whitelist.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-// };
+app.get("/products/:id", function (req, res, next) {
+  res.json({ msg: "This is CORS-enabled for all origins!" });
+});
 
-// app.use(cors(corsOptions));
-
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://tube-tracks.onrender.com"
-  );
-  next();
+app.listen(80, function () {
+  console.log("CORS-enabled web server listening on port 80");
 });
 
 // setup for receiving JSON
