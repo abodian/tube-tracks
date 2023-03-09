@@ -4,10 +4,13 @@ import Keyboard from "../app/keyboard/Keyboard";
 
 const Tone = require("tone");
 
-function TrainLine({ lineData, checkedLines, checkedInstruments, isPiano }) {
-  const [zoom, setZoom] = useState(1.1);
-  const [activeNumber, setActiveNumber] = useState("");
-
+function TrainLine({
+  lineData,
+  checkedLines,
+  checkedInstruments,
+  isPiano,
+  zoom,
+}) {
   const stations = {
     victoria: [
       "Brixton Underground Station",
@@ -523,31 +526,15 @@ function TrainLine({ lineData, checkedLines, checkedInstruments, isPiano }) {
     return () => clearInterval(intervalId);
   });
 
-  const handleZoomIn = () => {
-    setZoom(zoom + 0.1);
-  };
-
-  const handleZoomOut = () => {
-    setZoom(zoom - 0.1);
-  };
-
   return (
     <div className="train-line" style={{ zoom: zoom }}>
-      <Keyboard
-        isPiano={isPiano}
-        playNote={handlePlayKey}
-        activeNumber={activeNumber}
-      ></Keyboard>
-
-      <button onClick={handleZoomIn}>Zoom In</button>
-      <button onClick={handleZoomOut}>Zoom Out</button>
       {Object.keys(stations).map(
         (line) =>
           checkedLines[line] && (
             <div key={line} className={`line ${line}`}>
               <svg viewBox="-1230 0 24400 150">
                 <line
-                  x1="9500"
+                  x1="9000"
                   y1="50"
                   x2="23000"
                   y2="50"
@@ -606,6 +593,7 @@ function TrainLine({ lineData, checkedLines, checkedInstruments, isPiano }) {
             </div>
           )
       )}
+      <Keyboard isPiano={isPiano} playNote={handlePlayKey}></Keyboard>
     </div>
   );
 }

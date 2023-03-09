@@ -64,7 +64,7 @@
     position: absolute;
     top: -500px;
     right:33%;
-    visibility: visible;
+    visibility: hidden;
     transition: 0.5s;
   }
   .vis{

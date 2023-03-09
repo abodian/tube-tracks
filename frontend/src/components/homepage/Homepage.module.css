@@ -262,3 +262,6 @@ input:checked + label:after {
 .tubeicons {
   display: flex;
 }
+.zoomButtons{
+  margin:100px 12px 0 -100px;
+}

@@ -7,6 +7,8 @@ import Features from "../features/Features";
 const Tone = require("tone");
 
 const Homepage = ({ lineData, handleIsRunningChange }) => {
+  const [zoom, setZoom] = useState(1.1);
+
   const backgroundAudio = {
     orchestron:
       "https://res.cloudinary.com/did9lgedz/video/upload/v1678200859/tube-tracks/Backing_Track_1_von8kt.wav",
@@ -27,6 +29,14 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
   };
   const handlePlayNote = (note) => {
     setNote(note);
+  };
+
+  const handleZoomIn = () => {
+    setZoom(zoom + 0.1);
+  };
+
+  const handleZoomOut = () => {
+    setZoom(zoom - 0.1);
   };
 
   useEffect(() => {
@@ -103,6 +113,10 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
         <div className={styles.strapline}>
           Tube Tracks <span>TfL Arrival Data Sonification</span>
         </div>
+        <div className={styles.zoomButtons}>
+          <button onClick={handleZoomIn}>Zoom In</button>
+          <button onClick={handleZoomOut}>Zoom Out</button>
+        </div>
 
         <div className={styles.instructions}>
           <AudioControl
@@ -141,6 +155,7 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
               lineData={lineData}
               checkedInstruments={checkedInstruments}
               isPiano={isPiano}
+              zoom={zoom}
             />
           </div>
         ) : (
