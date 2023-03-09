@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import Homepage from "../homepage/Homepage";
 import axios from "axios";
 import "./App.css";
+const express = require('express')
+const app = express()
+const cors = require("cors");
+app.use(cors())
 
 function App() {
   const [lineData, setLineData] = useState([]);
