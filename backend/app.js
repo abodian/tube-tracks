@@ -7,7 +7,7 @@ const cors = require("cors");
 
 const app = express();
 
-const whitelist = ["http://localhost:10000"]; // Replace with your frontend URL
+const whitelist = ["tube-tracks.onrender.com"]; // Replace with your frontend URL
 
 const corsOptions = {
   origin: (origin, callback) => {
