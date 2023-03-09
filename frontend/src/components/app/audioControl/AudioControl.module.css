@@ -1,9 +1,10 @@
 .playnpause {
+  padding-left: 4px;
   transition: 0.3s;
 }
 
 .playnpause img {
-  padding: 8px;
+  padding: 8px 0 0 0;
   width: 56px;
   margin: 12px 0 2px 12px;
 }
@@ -13,7 +14,6 @@
 }
 .container {
   display: flex;
-  max-height: 12px;
 }
 
 .speaker {
@@ -44,4 +44,18 @@ input {
   font-family: initial;
   color: initial;
   background-color: initial;
+}
+.keyboard{
+margin:0;
+transition: 0.3s;
+
+}
+.keyboard img{
+width:104px;
+padding:10px 16px 6px 0;
+
+}
+.keyboard:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
