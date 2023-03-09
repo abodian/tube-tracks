@@ -394,12 +394,12 @@ function TrainLine({
         "https://res.cloudinary.com/did9lgedz/video/upload/v1678384966/tube-tracks/improved%20pizz/AS2_-_Pizz_1_ksvht7.wav",
     },
     marimba: {
-      FSDSChMarimba:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/FSDSChMarimba_1_uoj8d1.wav",
-      GSESChMarimba:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/GSESChMarimba_1_qsue3n.wav",
-      CSDSClusterMarimba:
-        "https://res.cloudinary.com/did9lgedz/video/upload/v1678198048/tube-tracks/marimba/CSDSClusterMarimba_1_bgjpeh.wav",
+      FSCSChMarimba:
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678387812/tube-tracks/improved%20marimba/FSCSChMarimba1_1_omqkp1.wav",
+      GSDSChMarimba:
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678387812/tube-tracks/improved%20marimba/GSDSChMarimba1_1_lnbbwi.wav",
+      DSCSClusterMarimba:
+        "https://res.cloudinary.com/did9lgedz/video/upload/v1678387812/tube-tracks/improved%20marimba/DSCShMarimba1_1_timwwe.wav",
     },
   };
 
@@ -513,7 +513,7 @@ function TrainLine({
           setTimeout(() => {
             const arrivalPlayer = new Tone.Player(randomKey).toDestination();
             arrivalPlayer.autostart = true;
-            arrivalPlayer.volume.value = -12;
+            arrivalPlayer.volume.value = -8;
           }, index * 500 + delay); // delay each sound by 1 second
         });
       }
