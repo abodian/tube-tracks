@@ -113,10 +113,6 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
         <div className={styles.strapline}>
           Tube Tracks <span>TfL Arrival Data Sonification</span>
         </div>
-        <div className={styles.zoomButtons}>
-          <button onClick={handleZoomIn}>Zoom In</button>
-          <button onClick={handleZoomOut}>Zoom Out</button>
-        </div>
 
         <div className={styles.instructions}>
           <AudioControl
@@ -126,6 +122,14 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
             toggle={handlePiano}
             playNote={handlePlayNote}
           />
+        </div>
+      </div>
+      <div className={styles.zoomButtons}>
+        <div onClick={handleZoomIn}>
+          <img src="/images/zoomin.png" alt="zoom in"></img>
+        </div>
+        <div onClick={handleZoomOut}>
+          <img src="/images/zoomout.png" alt="zoom out"></img>
         </div>
       </div>
       <div className={styles.content}>

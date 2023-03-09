@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styles from "./AudioControl.module.css";
 
 const PlayStop = ({ stop, start, initialVisible, toggle }) => {
-  const [visible, setVisible] = useState(initialVisible);
-
   return (
     <>
       <div className={styles.container}>
