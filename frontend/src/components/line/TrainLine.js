@@ -421,10 +421,10 @@ function TrainLine({
   };
 
   const playBassNote = (note) => {
-    const player = new Tone.Player(bass[note]).toDestination();
-    player.autostart = true;
-    player.volume.value = -25;
-    player.loop = false;
+  const bassPlayer = new Tone.Player(bass[note]).toDestination();
+   bassPlayer.autostart = true;
+   bassPlayer.loop = false;
+   bassPlayer.volume.value = -20;
   };
 
   const handlePlayKey = (key) => {
@@ -485,7 +485,7 @@ function TrainLine({
           expectedArrival.setHours(hours);
           expectedArrival.setMinutes(minutes);
           expectedArrival.setSeconds(seconds);
-          if (Math.abs(expectedArrival.getTime() - now.getTime()) <= 250) {
+          if (Math.abs(expectedArrival.getTime() - now.getTime()) <= 200) {
             if (checkedLines[train.lineName.toLowerCase()]) {
               console.log(train);
               matchingTrains.push(train);
