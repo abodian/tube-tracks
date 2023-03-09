@@ -270,8 +270,10 @@ input:checked + label:after {
   margin-top:-52px;
   margin-left: 240px;
 }
-.zoomButtons img{
-  
+.zoomButtons img{  
   width: 40px;
-
+}
+.zoomButtons img:hover{ 
+  transform: scale(1.1);
+  cursor: pointer;
 }
