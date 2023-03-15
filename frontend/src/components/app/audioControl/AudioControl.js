@@ -13,8 +13,7 @@ const PlayStop = ({ stop, start, initialVisible, toggle }) => {
           <img src="/images/stop.png" alt="pause button" onClick={stop}></img>
         </div>
         <div className={styles.instruct}>Press play, and have fun!</div>
-        <div class={styles.volume}>
-          {" "}
+        <div className={styles.volume}>
           <div className={styles.keyboard}>
             <img
               src="/images/image.png"

@@ -7,7 +7,7 @@ const PianoControl = ({ initialVisible, toggle }) => {
 
   return (
     <>
-      <div class={styles.keyboard}>
+      <div className={styles.keyboard}>
         <div className={styles.keyboard}>
           <img
             src="/images/keyboard.png"
