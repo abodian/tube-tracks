@@ -17,6 +17,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
 // setup for receiving JSON
 app.use(express.json());
 app.use(logger("dev"));

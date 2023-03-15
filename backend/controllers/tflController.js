@@ -1,8 +1,6 @@
 const axios = require("axios");
 const API_ID = process.env.REACT_APP_API_ID;
 const API_KEY = process.env.REACT_APP_API_KEY;
-console.log(API_ID);
-console.log(API_KEY);
 
 const TflApiController = {
   LineIndex: async (req, res) => {
