@@ -100,7 +100,6 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
   const handleInstrumentChange = (instrument, isChecked) => {
     setCheckedInstruments({ ...checkedInstruments, [instrument]: isChecked });
   };
-  console.log(checkedInstruments);
 
   return (
     <>
@@ -188,8 +187,8 @@ const Homepage = ({ lineData, handleIsRunningChange }) => {
               </p>
               <p>
                 Have a play around, turn instruments on and off, turn lines on
-                and off, and also why not try our interactive keyboard on the top right
-                to add a bit of upright bass!
+                and off, and also why not try our interactive keyboard on the
+                top right to add a bit of upright bass!
               </p>
               <p>
                 Bored of the Orchestron? Try Cosmic Wave, an alternative but

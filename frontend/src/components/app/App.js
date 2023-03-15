@@ -9,11 +9,13 @@ function App() {
 
   const handleIsRunningChange = (value) => {
     setIsRunning(value);
-  }
+  };
 
   const fetchData = async () => {
     try {
-      const fetchedData = await fetchLineData("victoria, jubilee, central, metropolitan, northern, bakerloo, piccadilly, district, circle, DLR, hammersmith-city");
+      const fetchedData = await fetchLineData(
+        "victoria, jubilee, central, metropolitan, northern, bakerloo, piccadilly, district, circle, DLR, hammersmith-city"
+      );
 
       setLineData(fetchedData);
     } catch (error) {
@@ -23,10 +25,8 @@ function App() {
 
   const fetchLineData = async (line) => {
     try {
-      console.log('FETCHING API DATA')
       const response = await axios.get(`http://localhost:8080/line/${line}`);
       return response.data.transformedData;
-
     } catch (error) {
       console.error(error);
     }
@@ -35,24 +35,25 @@ function App() {
   useEffect(() => {
     if (isRunning) {
       fetchData();
-      
+
       const intervalId = setInterval(() => {
         fetchData();
       }, 175000);
-  
+
       return () => {
         clearInterval(intervalId);
       };
     }
   }, [isRunning]);
 
-  useEffect(() => {
-    console.log(lineData);
-  }, [lineData]);
+  useEffect(() => {}, [lineData]);
 
   return (
     <div className="App">
-      <Homepage lineData={lineData} handleIsRunningChange={handleIsRunningChange}/>
+      <Homepage
+        lineData={lineData}
+        handleIsRunningChange={handleIsRunningChange}
+      />
     </div>
   );
 }
